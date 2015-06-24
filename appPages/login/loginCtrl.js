@@ -16,7 +16,7 @@
 
     function onSuccess() {
         $rootScope.loginUser = User.getUserData();
-        $state.go('m.Users.list');
+        $state.go('m.Users.list',{},{reload:true});
     }
 
     function onFail(err) {

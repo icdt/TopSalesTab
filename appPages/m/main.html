@@ -104,7 +104,7 @@
                         <li ui-sref-active="active"><a ui-sref="m.CRUD.list">CRUD5</a></li>
                     </ul>
                 </li>-->
-                <li ui-sref-active="active"><i class='fa fa-link'></i><a ui-sref="m.Home.index"><i class='fa fa-link'></i> <span>首頁</span></a></li>
+                <li ui-sref-active="active"><i class='fa fa-link'></i><a ui-sref="m.Home.index" ui-sref-opts="{reload:true}"><i class='fa fa-link'></i> <span>首頁</span></a></li>
                 <li class="treeview" ui-sref-active="active">
                     <a href="#"><i class='fa fa-link'></i> <span>產品與庫存管理</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
@@ -123,7 +123,7 @@
                     <a href="#"><i class='fa fa-link'></i> <span>行程管理</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li ui-sref-active="active"><a ui-sref="m.EEvents.plan">行程管理</a></li>
-                        <li ui-sref-active="active"><a ui-sref="m.EEvents.edit">建立拜訪計劃</a></li>
+                        <li ui-sref-active="active"><a ui-sref="m.EEvents.edit" ui-sref-opts="{reload:true}">建立拜訪計劃</a></li>
                         <li ui-sref-active="active"><a ui-sref="m.EEvents.list">瀏覽拜訪計劃</a></li>
                         <li ui-sref-active="active"><a ui-sref="m.CRUD.list">建立拜訪紀錄</a></li>
                         <li ui-sref-active="active"><a ui-sref="m.CRUD.list">瀏覽拜訪紀錄</a></li>
