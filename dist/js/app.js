@@ -232,65 +232,65 @@ function _init() {
    */
   $.AdminLTE.layout = {
     activate: function () {
-      var _this = this;
-      _this.fix();
-      _this.fixSidebar();
-      $(window, ".wrapper").resize(function () {
-        _this.fix();
-        _this.fixSidebar();
-      });
+      //var _this = this;
+      //_this.fix();
+      //_this.fixSidebar();
+      //$(window, ".wrapper").resize(function () {
+      //  _this.fix();
+      //  _this.fixSidebar();
+      //});
     },
     fix: function () {
-      //Get window height and the wrapper height
-      var neg = $('.main-header').outerHeight() + $('.main-footer').outerHeight();
-      var window_height = $(window).height();
-      var sidebar_height = $(".sidebar").height();
-      //Set the min-height of the content and sidebar based on the
-      //the height of the document.
-      if ($("body").hasClass("fixed")) {
-        $(".content-wrapper, .right-side").css('min-height', window_height - $('.main-footer').outerHeight());
-      } else {
-        var postSetWidth;
-        if (window_height >= sidebar_height) {
-          $(".content-wrapper, .right-side").css('min-height', window_height - neg);
-          postSetWidth = window_height - neg;
-        } else {
-          $(".content-wrapper, .right-side").css('min-height', sidebar_height);
-          postSetWidth = sidebar_height;
-        }
+      ////Get window height and the wrapper height
+      //var neg = $('.main-header').outerHeight() + $('.main-footer').outerHeight();
+      //var window_height = $(window).height();
+      //var sidebar_height = $(".sidebar").height();
+      ////Set the min-height of the content and sidebar based on the
+      ////the height of the document.
+      //if ($("body").hasClass("fixed")) {
+      //  $(".content-wrapper, .right-side").css('min-height', window_height - $('.main-footer').outerHeight());
+      //} else {
+      //  var postSetWidth;
+      //  if (window_height >= sidebar_height) {
+      //    $(".content-wrapper, .right-side").css('min-height', window_height - neg);
+      //    postSetWidth = window_height - neg;
+      //  } else {
+      //    $(".content-wrapper, .right-side").css('min-height', sidebar_height);
+      //    postSetWidth = sidebar_height;
+      //  }
 
-        //Fix for the control sidebar height
-        var controlSidebar = $($.AdminLTE.options.controlSidebarOptions.selector);
-        if (typeof controlSidebar !== "undefined") {
-          if (controlSidebar.height() > postSetWidth)
-            $(".content-wrapper, .right-side").css('min-height', controlSidebar.height());
-        }
+      //  //Fix for the control sidebar height
+      //  var controlSidebar = $($.AdminLTE.options.controlSidebarOptions.selector);
+      //  if (typeof controlSidebar !== "undefined") {
+      //    if (controlSidebar.height() > postSetWidth)
+      //      $(".content-wrapper, .right-side").css('min-height', controlSidebar.height());
+      //  }
 
-      }
+      //}
     },
     fixSidebar: function () {
-      //Make sure the body tag has the .fixed class
-      if (!$("body").hasClass("fixed")) {
-        if (typeof $.fn.slimScroll != 'undefined') {
-          $(".sidebar").slimScroll({destroy: true}).height("auto");
-        }
-        return;
-      } else if (typeof $.fn.slimScroll == 'undefined' && console) {
-        console.error("Error: the fixed layout requires the slimscroll plugin!");
-      }
-      //Enable slimscroll for fixed layout
-      if ($.AdminLTE.options.sidebarSlimScroll) {
-        if (typeof $.fn.slimScroll != 'undefined') {
-          //Destroy if it exists
-          $(".sidebar").slimScroll({destroy: true}).height("auto");
-          //Add slimscroll
-          $(".sidebar").slimscroll({
-            height: ($(window).height() - $(".main-header").height()) + "px",
-            color: "rgba(0,0,0,0.2)",
-            size: "3px"
-          });
-        }
-      }
+      ////Make sure the body tag has the .fixed class
+      //if (!$("body").hasClass("fixed")) {
+      //  if (typeof $.fn.slimScroll != 'undefined') {
+      //    $(".sidebar").slimScroll({destroy: true}).height("auto");
+      //  }
+      //  return;
+      //} else if (typeof $.fn.slimScroll == 'undefined' && console) {
+      //  console.error("Error: the fixed layout requires the slimscroll plugin!");
+      //}
+      ////Enable slimscroll for fixed layout
+      //if ($.AdminLTE.options.sidebarSlimScroll) {
+      //  if (typeof $.fn.slimScroll != 'undefined') {
+      //    //Destroy if it exists
+      //    $(".sidebar").slimScroll({destroy: true}).height("auto");
+      //    //Add slimscroll
+      //    $(".sidebar").slimscroll({
+      //      height: ($(window).height() - $(".main-header").height()) + "px",
+      //      color: "rgba(0,0,0,0.2)",
+      //      size: "3px"
+      //    });
+      //  }
+      //}
     }
   };
 
@@ -491,19 +491,19 @@ function _init() {
       }
     },
     _fix: function (sidebar) {
-      var _this = this;
-      if ($("body").hasClass('layout-boxed')) {
-        sidebar.css('position', 'absolute');
-        sidebar.height($(".wrapper").height());
-        $(window).resize(function () {
-          _this._fix(sidebar);
-        });
-      } else {
-        sidebar.css({
-          'position': 'fixed',
-          'height': 'auto'
-        });
-      }
+      //var _this = this;
+      //if ($("body").hasClass('layout-boxed')) {
+      //  sidebar.css('position', 'absolute');
+      //  sidebar.height($(".wrapper").height());
+      //  $(window).resize(function () {
+      //    _this._fix(sidebar);
+      //  });
+      //} else {
+      //  sidebar.css({
+      //    'position': 'fixed',
+      //    'height': 'auto'
+      //  });
+      //}
     },
     _fixForFixed: function (sidebar) {
       sidebar.css({
@@ -531,49 +531,49 @@ function _init() {
     selectors: $.AdminLTE.options.boxWidgetOptions.boxWidgetSelectors,
     icons: $.AdminLTE.options.boxWidgetOptions.boxWidgetIcons,
     activate: function () {
-      var _this = this;
-      //Listen for collapse event triggers
-      $(_this.selectors.collapse).on('click', function (e) {
-        e.preventDefault();
-        _this.collapse($(this));
-      });
+      //var _this = this;
+      ////Listen for collapse event triggers
+      //$(_this.selectors.collapse).on('click', function (e) {
+      //  e.preventDefault();
+      //  _this.collapse($(this));
+      //});
 
-      //Listen for remove event triggers
-      $(_this.selectors.remove).on('click', function (e) {
-        e.preventDefault();
-        _this.remove($(this));
-      });
+      ////Listen for remove event triggers
+      //$(_this.selectors.remove).on('click', function (e) {
+      //  e.preventDefault();
+      //  _this.remove($(this));
+      //});
     },
     collapse: function (element) {
-      var _this = this;
-      //Find the box parent
-      var box = element.parents(".box").first();
-      //Find the body and the footer
-      var box_content = box.find("> .box-body, > .box-footer");
-      if (!box.hasClass("collapsed-box")) {
-        //Convert minus into plus
-        element.children(":first")
-                .removeClass(_this.icons.collapse)
-                .addClass(_this.icons.open);
-        //Hide the content
-        box_content.slideUp(300, function () {
-          box.addClass("collapsed-box");
-        });
-      } else {
-        //Convert plus into minus
-        element.children(":first")
-                .removeClass(_this.icons.open)
-                .addClass(_this.icons.collapse);
-        //Show the content
-        box_content.slideDown(300, function () {
-          box.removeClass("collapsed-box");
-        });
-      }
+      //var _this = this;
+      ////Find the box parent
+      //var box = element.parents(".box").first();
+      ////Find the body and the footer
+      //var box_content = box.find("> .box-body, > .box-footer");
+      //if (!box.hasClass("collapsed-box")) {
+      //  //Convert minus into plus
+      //  element.children(":first")
+      //          .removeClass(_this.icons.collapse)
+      //          .addClass(_this.icons.open);
+      //  //Hide the content
+      //  box_content.slideUp(300, function () {
+      //    box.addClass("collapsed-box");
+      //  });
+      //} else {
+      //  //Convert plus into minus
+      //  element.children(":first")
+      //          .removeClass(_this.icons.open)
+      //          .addClass(_this.icons.collapse);
+      //  //Show the content
+      //  box_content.slideDown(300, function () {
+      //    box.removeClass("collapsed-box");
+      //  });
+      //}
     },
     remove: function (element) {
       //Find the box parent
-      var box = element.parents(".box").first();
-      box.slideUp();
+      //var box = element.parents(".box").first();
+      //box.slideUp();
     }
   };
 }
