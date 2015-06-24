@@ -1,0 +1,154 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <button type="submit" class="btn btn-default btn-flat" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>回行程規劃</button>
+    <br />
+    <br />
+    <h1>
+        項目明細
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 行程規劃 </a></li>
+        <li class="active">項目明細</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Your Page Content Here -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title"></h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+
+                    <form role="form" class="form-horizontal" style="margin: 0 auto;">
+                        <div class="row" style="width:100%;text-align:right">
+                            <div class="form-group">
+                                <label class="col-sm-8 control-label" for="actions">&nbsp;</label>
+                                <div class="col-sm-4">
+                                    <button type="submit" class="btn btn-success btn-flat block_inline" ng-click="vm.save()">儲存</button>&nbsp;&nbsp;
+                                    <button type="submit" class="btn btn-danger btn-flat block_inline" ng-if="vm.isEdit" ng-click="vm.delete()">刪除</button>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="nickname">項目名稱</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="order.nickname" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="firstname">客戶名稱</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="order.firstname" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="lastname">日期</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="order.lastname" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="lastname">截止日期</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="order.lastname" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <label class="col-sm-4 control-label" for="nickname">業務員</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="order.nickname" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="firstname">地點</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="order.firstname" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="lastname">時間</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="order.lastname" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="lastname">優先順序</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="order.lastname" />
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="lastname">規劃事項</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="order.lastname" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="lastname">拜訪記錄</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="order.lastname" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="lastname">附加檔案</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="order.lastname" />
+                                        </div>
+                                    </div>
+                                 
+
+
+                                </div>
+                            </div>
+
+
+
+
+</form>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+
+    </div>
+
+
+
+</section><!-- /.content -->
+<!--<script>
+  (function() {
+      $(".jdatepicker").datepicker();
+      $.datepicker.setDefaults($.datepicker.regional["zh-TW"]);
+  })();
+</script>-->
+
+<script>
+    (function () {
+        //if (!Modernizr.touch || !Modernizr.inputtypes.date) {
+        //    $('input[type=date]')
+        //        .attr('type', 'text')
+        //        .datepicker({
+        //            // Consistent format with the HTML5 picker
+        //            dateFormat: 'yy/mm/dd'
+        //        });
+        //    $.datepicker.setDefaults($.datepicker.regional["zh-TW"]);
+        //}
+    })();
+</script>

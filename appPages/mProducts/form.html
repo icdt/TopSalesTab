@@ -1,0 +1,99 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        <button type="submit" class="btn btn-default btn-flat" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>回列表</button>
+        &nbsp;
+        <a href="#"><i class="fa fa-dashboard"></i> 產品型錄 </a>
+        \ 大類型 \ 子分類 \ 產品管理
+        <small></small>
+    </h1>
+    <!--<ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> icdtview </a></li>
+        <li class="active">列表</li>
+    </ol>-->
+    <div class="edit_btn">
+        <button type="submit" class="btn btn-primary btn-flat block_inline" ng-click="vm.save()">儲存</button>
+    </div>
+
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Your Page Content Here -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-success">
+                <!--<div class="box-header">
+                    <h3 class="box-title"></h3>
+                </div>-->
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12 column">
+                            <form role="form" class="form-horizontal">
+                                <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+                                    <tr>
+                                        <td rowspan="4" class="view_img">
+                                            <div class="product_edit_img" style="background-image: url(appImg/20150401092514_47176.jpg)"></div>
+                                        </td>
+                                        <td class="view_title">品名</td>
+                                        <td class="view_content4"><input type="text" class="k-textbox name" /></td>
+                                        <td class="view_title">訂價</td>
+                                        <td class="view_content2"><input type="text" class="k-textbox" placeholder="請輸入數字" onkeyup="return ValidateNumber($(this),value)" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3" class="view_title">
+                                            規格簡述
+                                        </td>
+                                        <td rowspan="3" class="view_ckeditor">
+                                            <textarea rows="5" cols="5" style="width: 98%; height: 100px; margin: 0 auto;"></textarea>
+                                        </td>
+                                        <td class="view_title">規格</td>
+                                        <td class="view_content2"><input type="text" class="k-textbox" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="view_title">既有庫存量</td>
+                                        <td class="view_content2"><input type="text" class="k-textbox" placeholder="請輸入數字" onkeyup="return ValidateNumber($(this),value)" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="view_title">計量單位</td>
+                                        <td class="view_content2"><input type="text" class="k-textbox" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" class="view_ckeditor">
+                                            <textarea id="editor1" name="editor1" rows="10" cols="80" style="width: 98%; height: 250px; margin: 0 auto;"></textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+
+        </div>
+    </div>
+
+
+
+</section><!-- /.content -->
+<!--<script>
+  (function() {
+      $(".jdatepicker").datepicker();
+      $.datepicker.setDefaults($.datepicker.regional["zh-TW"]);
+  })();
+</script>-->
+
+<script>
+    (function () {
+        //if (!Modernizr.touch || !Modernizr.inputtypes.date) {
+        //    $('input[type=date]')
+        //        .attr('type', 'text')
+        //        .datepicker({
+        //            // Consistent format with the HTML5 picker
+        //            dateFormat: 'yy/mm/dd'
+        //        });
+        //    $.datepicker.setDefaults($.datepicker.regional["zh-TW"]);
+        //}
+    })();
+</script>

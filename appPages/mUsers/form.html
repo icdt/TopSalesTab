@@ -1,0 +1,104 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <button type="submit" class="btn btn-default btn-flat" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>回列表</button>
+    <br />
+    <br />
+    <h1>
+        明細
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 列表 </a></li>
+        <li class="active">明細</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Your Page Content Here -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title"></h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+
+                    <form role="form" class="form-horizontal" style="margin: 0 auto;">
+                        <div class="col-md-6 column">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="actions">&nbsp;</label>
+                                <div class="col-sm-8">
+                                    <button type="submit" class="btn btn-success btn-flat block_inline" ng-click="vm.save()">儲存</button>&nbsp;&nbsp;
+                                    <button type="submit" class="btn btn-danger btn-flat block_inline" ng-if="vm.isEdit" ng-click="vm.delete()">刪除</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="使用者名稱">使用者名稱</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" ng-model="vm.theUser.UserName" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="!vm.isEdit">
+                                <label class="col-sm-4 control-label" for="密碼">密碼</label>
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control" ng-model="vm.theUser.Password" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="!vm.isEdit">
+                                <label class="col-sm-4 control-label" for="確認密碼">確認密碼</label>
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control" ng-model="vm.theUser.ConfirmPassword" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="信箱">信箱</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" ng-model="vm.theUser.Email" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="">權限</label>
+                                <div class="col-sm-8 block_inline">
+                                    <label class="checkbox-inline" ng-repeat="item in vm.allGroups">
+                                        <input type="checkbox" checklist-model="vm.theUserGroups" checklist-value="item.Id" />{{item.Name}}
+                                    </label>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="form-group" ng-if="vm.isEdit">
+                                <label class="col-sm-4 control-label" for="重設密碼">重設密碼</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" ng-model="vm.theUser.NewPassword" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+
+    </div>
+
+
+
+</section><!-- /.content -->
+<!--<script>
+  (function() {
+      $(".jdatepicker").datepicker();
+      $.datepicker.setDefaults($.datepicker.regional["zh-TW"]);
+  })();
+</script>-->
+
+<script>
+    (function () {
+        //if (!Modernizr.touch || !Modernizr.inputtypes.date) {
+        //    $('input[type=date]')
+        //        .attr('type', 'text')
+        //        .datepicker({
+        //            // Consistent format with the HTML5 picker
+        //            dateFormat: 'yy/mm/dd'
+        //        });
+        //    $.datepicker.setDefaults($.datepicker.regional["zh-TW"]);
+        //}
+    })();
+</script>
