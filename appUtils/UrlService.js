@@ -10,7 +10,8 @@ angular.module('utility.config', [])
 
     return {
 
-        baseUrl: 'http://localhost:1131'
+        //aseUrl: 'http://localhost:1131'
+        baseUrl: 'http://topsales.azurewebsites.net'
 
     };
 
