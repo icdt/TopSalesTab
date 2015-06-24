@@ -10,8 +10,8 @@
 
     $scope.vm.login = function () {
 
-        User.authenticate($scope.vm.user.UserName, $scope.vm.user.Password, onSuccess, onFail, $scope.vm.user.PersistData);
-
+        //User.authenticate($scope.vm.user.UserName, $scope.vm.user.Password, onSuccess, onFail, $scope.vm.user.PersistData);
+        $state.go('m.Users.list');
     };
 
     function onSuccess() {

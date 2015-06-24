@@ -92,7 +92,7 @@ app.run(['$rootScope', '$state', '$stateParams',
 app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'ngToastProvider',
 function ($stateProvider, $urlRouterProvider, $httpProvider, ngToastProvider) {
 
-    $urlRouterProvider.otherwise('/m/Customers/list');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
     .state('login', {
