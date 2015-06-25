@@ -343,30 +343,30 @@ function _init() {
 
     },
     expandOnHover: function () {
-      var _this = this;
-      var screenWidth = $.AdminLTE.options.screenSizes.sm - 1;
-      //Expand sidebar on hover
-      $('.main-sidebar').hover(function () {
-        if ($('body').hasClass('sidebar-mini')
-                && $("body").hasClass('sidebar-collapse')
-                && $(window).width() > screenWidth) {
-          _this.expand();
-        }
-      }, function () {
-        if ($('body').hasClass('sidebar-mini')
-                && $('body').hasClass('sidebar-expanded-on-hover')
-                && $(window).width() > screenWidth) {
-          _this.collapse();
-        }
-      });
+      // var _this = this;
+      // var screenWidth = $.AdminLTE.options.screenSizes.sm - 1;
+      // //Expand sidebar on hover
+      // $('.main-sidebar').hover(function () {
+      //   if ($('body').hasClass('sidebar-mini')
+      //           && $("body").hasClass('sidebar-collapse')
+      //           && $(window).width() > screenWidth) {
+      //     _this.expand();
+      //   }
+      // }, function () {
+      //   if ($('body').hasClass('sidebar-mini')
+      //           && $('body').hasClass('sidebar-expanded-on-hover')
+      //           && $(window).width() > screenWidth) {
+      //     _this.collapse();
+      //   }
+      // });
     },
     expand: function () {
-      $("body").removeClass('sidebar-collapse').addClass('sidebar-expanded-on-hover');
+      // $("body").removeClass('sidebar-collapse').addClass('sidebar-expanded-on-hover');
     },
     collapse: function () {
-      if ($('body').hasClass('sidebar-expanded-on-hover')) {
-        $('body').removeClass('sidebar-expanded-on-hover').addClass('sidebar-collapse');
-      }
+      // if ($('body').hasClass('sidebar-expanded-on-hover')) {
+      //   $('body').removeClass('sidebar-expanded-on-hover').addClass('sidebar-collapse');
+      // }
     }
   };
 
