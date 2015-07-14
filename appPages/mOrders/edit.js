@@ -166,19 +166,20 @@ angular.module('app', []).controller('EditOrdersCtrl', [
             });
         };
 
-        // $scope.vm.takePhoto = function () {
+        $scope.vm.takePhoto = function () {
 
-        //     var options = {
-        //       destinationType: Camera.DestinationType.FILE_URI,
-        //       sourceType: Camera.PictureSourceType.CAMERA,
-        //     };
+            var options = {
+              destinationType: Camera.DestinationType.FILE_URI,
+              sourceType: Camera.PictureSourceType.CAMERA,
+            };
 
-        //     $cordovaCamera.getPicture(options).then(function(imageURI) {
-        //       $scope.vm.order.RECEIPT_BASE64 = imageURI;
-        //     }, function(err) {
-        //       // error
-        //     });
-        //   }, false);
+            $cordovaCamera.getPicture(options).then(function(imageURI) {
+              $scope.vm.order.RECEIPT_BASE64 = imageURI;
+            }, function(err) {
+              // error
+            });
+        }
+        
 
 
     }]);
