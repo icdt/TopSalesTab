@@ -51,6 +51,7 @@
 
         $scope.vm.addToCustomerToCart = function () {
             if ($scope.vm.autocompleteSelect) {
+                alert("in assignCustomer");
                 var ppObj = {
                     CUST_ID: $scope.vm.selectedCustomer.CUST_ID,
                     SALE_ID: typeof $global.loginUser.EMP_ID == 'undefined' ? null : $global.loginUser.EMP_ID
@@ -61,6 +62,7 @@
                     $global.newOrder = OrdersFactory.preparePostObj(ppObj);
                     $global.selectedCustomer = $scope.vm.selectedCustomer;
 
+                    alert("in assignVou");
 
                     $state.go('m.Products.category');
                 }).error(function (err) {
