@@ -13,7 +13,7 @@
     'ngDialog',
     'infinite-scroll',
 
-    // //state
+    //state
     'icdt.states.m',
     'icdt.states.m.Home',
     'icdt.states.m.Users',
@@ -45,17 +45,17 @@
 
 app.run(['$rootScope', '$state', '$stateParams',
         function ($rootScope, $state, $stateParams) {
-        alert("in app run");
+
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
 
             // 一進站新看localStorage內有沒有登入資訊
-            // try {
-            //     User.isAuthenticated();
-            //     $rootScope.loginUser = User.getUserData();
-            // } catch (e) {
-            //     // do nothing with this error
-            // }
+            try {
+                User.isAuthenticated();
+                $rootScope.loginUser = User.getUserData();
+            } catch (e) {
+                // do nothing with this error
+            }
 
             // 若未驗證成功會有stateChangeError, 判斷error名字，轉到登入會面
             $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
@@ -65,20 +65,12 @@ app.run(['$rootScope', '$state', '$stateParams',
                     $state.go('login', {}, { reload: true });
                 }
             });
-
-            // //訂單明細
-            // $rootScope.orderlist = "";
-
-            // //編輯訂單
-            // $rootScope.editOrderitem = "";
-
         }
 ]);
 
 
 app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'ngToastProvider',
 function ($stateProvider, $urlRouterProvider, $httpProvider, ngToastProvider) {
-alert("in app config");
 
     $urlRouterProvider.otherwise('/');
 
