@@ -60,7 +60,7 @@
                                         <td class="view_title">簽收照片&nbsp;<i class="fa fa-camera"></i></td>
                                         <td class="view_content1" colspan="3">
                                             <div class="product_edit_img edit" style="background-image: url({{vm.order.RECEIPT_BASE64}}); float: left;">
-                                                <input type="file" class="upload" file-model="vm.order.RECEIPT_FILE" onchange="angular.element(this).scope().handleFileImg()" />
+                                                <input type="file" class="upload" accept="image/*" file-model="vm.order.RECEIPT_FILE" onchange="angular.element(this).scope().handleFileImg()" />
                                                 <div class="upload_btn"><i class="fa fa-camera"></i>&nbsp;上傳圖片</div>
                                             </div>
                                             <button class="btn btn-primary zoom_in" ng-click="clickToOpen()"><i class="glyphicon glyphicon-zoom-in"></i> 檢視圖片</button>
