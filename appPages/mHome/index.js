@@ -8,27 +8,27 @@ angular.module('app', []).controller('ListindexCtrl', [
 
         動作
         //產品與庫存管理
-        $scope.goToProducts = function () {
+        $scope.vm.goToProducts = function () {
             $state.go("m.Products.category", {type: 1});
         };
         //顧客關係
-        $scope.goToCustomers = function () {
+        $scope.vm.goToCustomers = function () {
             $state.go("m.Customers.list");
         };
         //行程規劃
-        $scope.goToEEvents = function () {
+        $scope.vm.goToEEvents = function () {
             $state.go("m.EEvents.plan");
         };
         //帳務管理
-        $scope.goToUser = function () {
+        $scope.vm.goToOrders = function () {
             $state.go("m.Orders.list");
         };
         //最新消息
-        $scope.goToNews = function () {
+        $scope.vm.goToNews = function () {
             $state.go("m.News.dlist");
         };
         //設定
-        $scope.goToSettings = function () {
+        $scope.vm.goToSettings = function () {
             $state.go("m.Users.list");
         };
 
