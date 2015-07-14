@@ -1,5 +1,5 @@
 ﻿var app = angular.module('app', [
-    'ui.router',
+ 'ui.router',
     'oc.lazyLoad',
     'ngToast',
     'ui.bootstrap',
@@ -10,8 +10,6 @@
     'checklist-model',
     'kendo.directives',    
     'autocomplete',
-    //'angular-loading-bar',
-    //'QuickList',
     'ngDialog',
     'infinite-scroll',
 
@@ -43,6 +41,7 @@
     'icdt.states.m.OrdDetailthistCSV',
     'icdt.states.m.PdacfgCSV',
     'icdt.states.m.Reports'
+
 ]);
 
 app.run(['$rootScope', '$state', '$stateParams',
@@ -69,40 +68,37 @@ app.run(['$rootScope', '$state', '$stateParams',
             });
 
             //今天日期
-            //$rootScope.newDate = function () {
-            //    var date = new Date();
-            //    return date;
-            //}
+            $rootScope.newDate = function () {
+                var date = new Date();
+                return date;
+            }
 
-            ////增加指定天數
-            //$rootScope.addDate = function (obj) {
-            //    var date = addDays(new Date(), obj);
-            //    return date;
-            //}
+            //增加指定天數
+            $rootScope.addDate = function (obj) {
+                var date = addDays(new Date(), obj);
+                return date;
+            }
 
-            ////定義時間格式
-            //$rootScope.formatDate = function getFormattedDate(date) {
-            //    var year = date.getFullYear();
-            //    var month = (1 + date.getMonth()).toString();
-            //    month = month.length > 1 ? month : '0' + month;
-            //    var day = date.getDate().toString();
-            //    day = day.length > 1 ? day : '0' + day;
-            //    return year + '-' + month + '-' + day;
-            //}
+            //定義時間格式
+            $rootScope.formatDate = function getFormattedDate(date) {
+                var year = date.getFullYear();
+                var month = (1 + date.getMonth()).toString();
+                month = month.length > 1 ? month : '0' + month;
+                var day = date.getDate().toString();
+                day = day.length > 1 ? day : '0' + day;
+                return year + '-' + month + '-' + day;
+            }
 
-            ////定義增加天數
-            //function addDays(theDate, days) {
-            //    return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
-            //}
+            //定義增加天數
+            function addDays(theDate, days) {
+                return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
+            }
             //訂單明細
             $rootScope.orderlist = "";
 
             //編輯訂單
             $rootScope.editOrderitem = "";
 
-            // 初始化角色
-            //$rootScope.vm = {};
-            //$rootScope.vm.isManager = false
 
         }
 ]);
@@ -116,7 +112,7 @@ function ($stateProvider, $urlRouterProvider, $httpProvider, ngToastProvider) {
     $stateProvider
     .state('login', {
         url: '/',
-        templateUrl: 'appPages/alogin/index.html',
+        templateUrl: 'appPages/login/index.html',
         controller: 'LoginCtrl',
         resolve: {
             bodyClass: ['$rootScope', function ($rootScope) {
@@ -124,33 +120,13 @@ function ($stateProvider, $urlRouterProvider, $httpProvider, ngToastProvider) {
                 //$rootScope.wrapperClass = 'login-box';
             }]
         }
-    }).state('register', {
-        url: '/register',
-        templateUrl: 'appPages/aRegister/index.html',
-        controller: 'RegisterCtrl',
-        resolve: {
-            bodyClass: ['$rootScope', function ($rootScope) {
-                $rootScope.bodyClass = 'login-page';
-                //$rootScope.wrapperClass = 'login-box';
-            }]
-        }
     })
-    .state('changePassword', {
-        url: '/changePassword',
-        templateUrl: 'appPages/aUserChangePassword/index.html',
-        controller: 'UserChangePasswordCtrl',
-        resolve: {
-            bodyClass: ['$rootScope', function ($rootScope) {
-                $rootScope.bodyClass = 'login-page';
-                //$rootScope.wrapperClass = 'login-box';
-            }]
-        }
-    });
+    ;
 
     ngToastProvider.configure({
-        animation: 'slide', // or 'fade'
-        verticalPosition: 'top',
-        horizontalPosition:'center'
+        animation: 'slide' // or 'fade'
+        //verticalPosition: 'bottom',
+        //horizontalPosition:'center'
     });
 
 }]);
