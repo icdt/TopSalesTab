@@ -10,8 +10,6 @@
     'checklist-model',
     'kendo.directives',    
     'autocomplete',
-    //'angular-loading-bar',
-    //'QuickList',
     'ngDialog',
     'infinite-scroll',
 
@@ -47,7 +45,7 @@
 
 app.run(['$rootScope', '$state', '$stateParams',
         function ($rootScope, $state, $stateParams) {
-
+        alert("in app run");
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
 
@@ -77,9 +75,13 @@ app.run(['$rootScope', '$state', '$stateParams',
         }
 ]);
 
+app.config(function ($compileProvider){
+    $compileProvider.urlSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+})
 
 app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'ngToastProvider',
 function ($stateProvider, $urlRouterProvider, $httpProvider, ngToastProvider) {
+alert("in app config");
 
     $urlRouterProvider.otherwise('/');
 
