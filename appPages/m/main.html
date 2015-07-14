@@ -40,7 +40,7 @@
                         <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" style="height: 50px;">
                             <!-- The user image in the navbar-->
                             <!--<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />-->
-                            <img src="/aApp/backend/appImg/contactpoeple.png" class="user-image" alt="User Image" />
+                            <img src="aApp/backend/appImg/contactpoeple.png" class="user-image" alt="User Image" />
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs" ng-bind="loginUser.username"></span>
                         </a>
@@ -263,7 +263,7 @@
                 <td class="view_title" style="width: 50px;">客戶名稱</td>
                 <td class="view_content3">
                     <autocomplete name="CUST_NAME" class="k-textbox" ng-model="vm.autocompleteSelect" attr-placeholder="例: 優典行" click-activation="true" data="autocomplete.allCustomersName" on-type="autocomplete.searchCustomer" on-select="autocomplete.assignCustomer" required style="width: 80%"></autocomplete>
-                    <img ng-show="autocomplete.isSearchCustomer" src="/aApp/backend/appImg/loading_redball.gif" width="20" height="20" />
+                    <img ng-show="autocomplete.isSearchCustomer" src="aApp/backend/appImg/loading_redball.gif" width="20" height="20" />
                     <br />
                     <div class="error"
                          ng-show="signup_form.CUST_NAME.$invalid && signup_form.submitted">

@@ -12,6 +12,7 @@
     'autocomplete',
     'ngDialog',
     'infinite-scroll',
+    'ngCordova',
 
     //state
     'icdt.states.m',

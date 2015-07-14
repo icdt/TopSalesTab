@@ -23,4 +23,5 @@
   </feature>
   <gap:plugin name="org.apache.cordova.device" />
   <gap:plugin name="com.ionic.keyboard" version="1.0.3" />
+  <gap:plugin name="org.apache.cordova.camera" version="0.3.2" />
 </widget>
