@@ -3,6 +3,7 @@ angular.module('app', []).controller('ListindexCtrl', [
     '$scope', '$state', '$rootScope',
     function ($scope, $state, $rootScope) {
 
+        alert("in m.home");
         // 可取代icdtdata為對應model名稱，例: icdtdata --> Order
 
         // 宣告vm

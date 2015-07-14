@@ -1,6 +1,7 @@
 ﻿app.controller('MainCtrl', ['$scope', '$rootScope', '$global', '$state', 'User', 'ngDialog','CustomersFactory','VouSaleFactory','OrdersFactory',
     function ($scope, $rootScope, $global, $state, User, ngDialog,CustomersFactory,VouSaleFactory,OrdersFactory) {
-        
+        alert("in m");
+
         $("#loading").fadeOut("fast");
         $scope.vm = {};
         $scope.autocomplete = {};
