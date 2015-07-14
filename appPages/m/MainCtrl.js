@@ -51,12 +51,12 @@
 
         $scope.vm.addToCustomerToCart = function () {
             if ($scope.vm.autocompleteSelect) {
-                alert("in assignCustomer");
+                
                 var ppObj = {
                     CUST_ID: $scope.vm.selectedCustomer.CUST_ID,
                     SALE_ID: typeof $global.loginUser.EMP_ID == 'undefined' ? null : $global.loginUser.EMP_ID
                 };
-
+                alert("in assignCustomer");
                 VouSaleFactory.getNewVouSaleByOrdMaster().success(function (obj) {
                     ppObj.VOU_SALE = obj;
                     $global.newOrder = OrdersFactory.preparePostObj(ppObj);
@@ -67,6 +67,7 @@
                     $state.go('m.Products.category');
                 }).error(function (err) {
                     console.log(err);
+                    alert(err);
                 });
 
                 ngDialog.close();
