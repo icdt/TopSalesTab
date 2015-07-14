@@ -14,19 +14,20 @@
     <!-- Your Page Content Here -->
     <div class="row">
         <div class="col-sm-4">
-            <a ui-sref="m.Products.category({type: 1})" class="small-box bg-aqua-gradient" >aaa
-                <!-- <div class="inner">
+            <div class="small-box bg-aqua-gradient">
+                <div class="inner">
                     <h3>產品與庫存管理</h3>
                     <p>Product and Inventory Manage</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <div class="small-box-footer">前往 <i class="fa fa-arrow-circle-right"></i></div> -->
-            </a>
+                <a href="javascript:void(0)" class="small-box-footer" ng-click="goToProducts()">前往 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
         </div>
+
         <div class="col-sm-4">
-            <a href="javascript:" class="small-box bg-green-gradient" ng-click="goToCustomers()">
+            <div class="small-box bg-green-gradient">
                 <div class="inner">
                     <h3>顧客關係</h3>
                     <p>Customer relationship</p>
@@ -34,11 +35,12 @@
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <div class="small-box-footer">前往 <i class="fa fa-arrow-circle-right"></i></div>
-            </a>
+                <a href="javascript:void(0)" class="small-box-footer" ng-click="goToCustomers()">前往 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
         </div>
+
         <div class="col-sm-4">
-            <a href="javascript:" class="small-box bg-red-gradient" ng-click="goToEEvents()">
+            <div class="small-box bg-red-gradient">
                 <div class="inner">
                     <h3>行程規劃</h3>
                     <p>Trip planning</p>
@@ -46,14 +48,15 @@
                 <div class="icon">
                     <i class="fa fa-calendar"></i>
                 </div>
-                <div class="small-box-footer">前往 <i class="fa fa-arrow-circle-right"></i></div>
-            </a>
+                <a href="javascript:void(0)" class="small-box-footer" ng-click="goToEEvents()">前往 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
         </div>
-    </div> <!--end of row-->
+
+    </div>
 
     <div class="row">
         <div class="col-sm-4">
-            <a  href="javascript:" class="small-box bg-yellow-gradient" ng-click="goToUser()">
+            <div class="small-box bg-yellow-gradient">
                 <div class="inner">
                     <h3>帳務管理</h3>
                     <p>Accounts Manage</p>
@@ -61,11 +64,12 @@
                 <div class="icon">
                     <i class="fa fa-file"></i>
                 </div>
-                <div class="small-box-footer">前往 <i class="fa fa-arrow-circle-right"></i></div>
-            </a>
+                <a href="javascript:void(0)" class="small-box-footer" ng-click="goToUser()">前往 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
         </div>
+
         <div class="col-sm-4">
-            <a href="javascript:" class="small-box bg-light-blue-gradient" ng-click="goToNews()">
+            <div class="small-box bg-light-blue-gradient">
                 <div class="inner">
                     <h3>最新消息</h3>
                     <p>News</p>
@@ -73,11 +77,12 @@
                 <div class="icon">
                     <i class="fa fa-newspaper-o"></i>
                 </div>
-                <div class="small-box-footer">前往 <i class="fa fa-arrow-circle-right"></i></div>
-            </a>
+                <a href="javascript:void(0)" class="small-box-footer" ng-click="goToNews()">前往 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
         </div>
+
         <div class="col-sm-4">
-            <a href="javascript:" class="small-box bg-teal-gradient" ng-click="goToSettings()">
+            <div class="small-box bg-teal-gradient">
                 <div class="inner">
                     <h3>設定</h3>
                     <p>Settings</p>
@@ -85,8 +90,8 @@
                 <div class="icon">
                     <i class="fa fa-gear"></i>
                 </div>
-                <div class="small-box-footer">前往 <i class="fa fa-arrow-circle-right"></i></div>
-            </a>
+                <a href="javascript:void(0)" class="small-box-footer" ng-click="goToSettings()">前往 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
         </div>
     </div><!--end of row-->
 
