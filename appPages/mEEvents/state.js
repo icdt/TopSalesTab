@@ -9,21 +9,21 @@
             template: '<div ui-view></div>'
         })
 //-------List-----------------------------------------------
-	    .state('m.EEvents.list', {
-	        url: '/list',
-	        views: {
-	            'content@m': {
-	                templateUrl: 'appPages/mEEvents/list.html',
-	                controller: 'ListEEventsCtrl'
-	            }
-	        },
-	        resolve: {
-	            loadcustomerListCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-	                // you can lazy load files for an existing module
-	                return $ocLazyLoad.load('appPages/mEEvents/list.js');
-	            }]
-	        }
-	    })
+	    //.state('m.EEvents.list', {
+	    //    url: '/list',
+	    //    views: {
+	    //        'content@m': {
+	    //            templateUrl: 'appPages/mEEvents/list.html',
+	    //            controller: 'ListEEventsCtrl'
+	    //        }
+	    //    },
+	    //    resolve: {
+	    //        loadcustomerListCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+	    //            // you can lazy load files for an existing module
+	    //            return $ocLazyLoad.load('appPages/mEEvents/list.js');
+	    //        }]
+	    //    }
+	    //})
 //-------Plan-----------------------------------------------
 	    .state('m.EEvents.plan', {
 	        url: '/plan',

@@ -65,7 +65,43 @@ body {
 }*/
 
 .ng-toast__message {
-	text-align: left !important;
+    text-align: left !important;
+}
+
+.alert-my_alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 70px !important;
+}
+
+.my_alert_danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.my_alert_success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.my_alert_info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.my_alert_warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+
+/*首頁*/
+.small-box {
+	cursor: pointer;
 }
 
 /*管理列表區塊標題*/
@@ -106,41 +142,45 @@ body {
 .main_category, .sub_category {
 	/*height: 450px !important;*/
 	overflow-y: auto;
-	border: 1px solid #ddd;
+	border: 1px solid #EFEFEF;
 	padding: 0;
 }
 
 	.main_category > .col-sm-11 {
 		line-height: 40px;
-		border: 1px solid #ddd;
+		border: 1px solid #EFEFEF;
 		margin: 10px 5px;
 		cursor: pointer;
 	}
 
 		.main_category > .col-sm-11:hover {
-			background-color: #ddd;
+			background-color: #EFEFEF;
 		}
 
-		.sub_category > .col-sm-11 {
+	.main_category .active {
+		background-color: #EFEFEF;
+	}
+
+	.sub_category > .col-sm-11 {
 		line-height: 40px;
-		border: 1px solid #ddd;
+		border: 1px solid #EFEFEF;
 		margin: 10px 5px;
 		cursor: pointer;
 	}
 
 		.sub_category > .col-sm-11:hover {
-			background-color: #ddd;
+			background-color: #EFEFEF;
 		}
 
 	.sub_category > .col-sm-5 {
 		line-height: 40px;
-		border: 1px solid #ddd;
+		border: 1px solid #EFEFEF;
 		margin: 10px 8px;
 		cursor: pointer;
 	}
 
 		.sub_category > .col-sm-5:hover {
-			background-color: #ddd;
+			background-color: #EFEFEF;
 		}
 
 .product_img {
@@ -153,12 +193,52 @@ body {
 }
 
 .product_edit_img {
+	position: relative;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 120px;
 	height: 120px;
 	margin: 0 auto;
+}
+
+	.product_edit_img.edit {
+		border: 1px solid #EFEFEF;
+	}
+
+.zoom_in {
+	float: left;
+	margin: 85px 0 0 8px;
+}
+
+.ngdialog.ngdialog-theme-default {
+	padding-top: 5% !important;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+	text-align: center;
+	width: 50% !important;
+	height: auto !important;
+}
+
+.upload {
+	position: relative;
+	opacity: 0;
+	width: 120px;
+	height: 120px;
+	z-index: 999;
+	cursor: pointer;
+}
+
+.upload_btn {
+	background-color: rgba(0, 0, 0, 0.50);
+	position: absolute;
+	bottom: 0;
+	width: 120px;
+	line-height: 24px;
+	text-align: left;
+	color: #fff;
+	padding-left: 10px;
 }
 
 /*表格管理*/
@@ -177,24 +257,33 @@ table {
 		width: 90px;
 		vertical-align: middle !important;
 		padding-right: 5px;
+		background-color: #EFEFEF;
+	}
+
+	table .view_title2 {
+		text-align: right;
+		width: 50px;
+		vertical-align: middle !important;
+		padding-right: 5px;
+		background-color: #EFEFEF;
 	}
 
 	table .view_content1 {
 		text-align: left;
 		vertical-align: middle !important;
-		width: 25%;
+		width: 22%;
 	}
 
 	table .view_content2 {
 		text-align: left;
 		vertical-align: middle !important;
-		width: 15%;
+		width: 13%;
 	}
 
 	table .view_content3 {
 		text-align: left;
 		vertical-align: middle !important;
-		width: 15%;
+		width: 22%;
 	}
 
 	table .view_content4 {
@@ -227,7 +316,6 @@ table {
 	}
 
 	table .view_ckeditor {
-		text-align: center;
 		vertical-align: middle !important;
 	}
 
@@ -235,20 +323,86 @@ table {
 		width: 90% !important;
 	}
 
-		table input[type=text].k-textbox.name {
-			width: 80% !important;
-		}
+    table input[type=checkbox] {
+		width: 20px !important;
+        height: 20px !important;
+	}
 
-		table input[type=text].k-textbox.count {
-			width: 20% !important;
-		}
+	table.customer input[type=text].k-textbox {
+		width: 80% !important;
+	}
 
-table .margin {
-	width: 150px !important;
-	height: auto !important;
+	table input[type=text].k-textbox.name {
+		width: 80% !important;
+	}
+
+	table input[type=text].k-textbox.count {
+		width: 40% !important;
+	}
+
+	table .margin {
+		width: 150px !important;
+		height: auto !important;
+	}
+
+input[type=text].k-textbox.search {
+	width: 50% !important;
 }
 
 .k-datepicker-calendar, .k-number {
 	font-size: 14px !important;
 }
 
+/*讀取畫面*/
+.loading {
+	background-color: rgba(0, 0, 0, 0.50);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	text-align: center;
+	color: #eee;
+	font-size: 24px;
+	font-weight: 700;
+	display: none;
+}
+
+	.loading img {
+		width: 55px;
+		margin: 20% auto 10px auto;
+	}
+
+/*驗證錯誤*/
+.error {
+	color: red;
+	font-size: 14px;
+	display: block;
+	width: 100%;
+}
+
+/*編輯器調整*/
+.cke_dialog .ImagePreviewBox {
+	width: auto !important;
+}
+
+
+/*自動完成*/
+.autocomplete ul {
+	background-color: #fff;
+	height: 200px;
+	z-index: 999;
+    overflow: scroll !important;
+    max-height: 200px !important;
+}
+
+/*跑馬燈*/
+.news_marquee {
+  width: 200px;
+  padding-top: 15px;
+  margin-left: 20px;
+  color: yellow;
+}

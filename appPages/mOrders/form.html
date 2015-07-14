@@ -1,17 +1,14 @@
 ﻿<!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <button type="submit" class="btn btn-default btn-flat" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>回列表</button>
+        <button type="submit" class="btn btn-default btn-flat" ng-click="vm.returnToList()"><span class="glyphicon glyphicon-chevron-left"></span>回列表</button>
+        訂單明細
         <small></small>
     </h1>
-    <!--<ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> icdtview </a></li>
-        <li class="active">列表</li>
-    </ol>-->
-    <div class="edit_btn">
-        <button type="submit" class="btn btn-primary btn-flat block_inline" ng-click="vm.save()">儲存</button>&nbsp;&nbsp;
-        <button type="submit" class="btn btn-facebook btn-flat block_inline">繼續選購</button>
-    </div>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 訂單 </a></li>
+        <li class="active">訂單明細</li>
+    </ol>
 </section>
 <!-- Main content -->
 <section class="content">
@@ -24,37 +21,49 @@
                 </div>-->
                 <!-- /.box-header -->
                 <div class="box-body">
+                    <div class="row" style="width:100%;text-align:right">
+                        <div class="form-group block_inline">
+                            <button type="submit" class="btn btn-facebook btn-flat block_inline" ng-show="!vm.isEdit" ng-click="vm.goToProductList()">繼續選購</button>
+                        </div>
+                        <div class="form-group block_inline">
+                            <button type="submit" class="btn btn-primary btn-flat block_inline" ng-click="vm.save()">儲存</button>
+                        </div>
+                        <div class="form-group block_inline">
+                            <button type="submit" class="btn btn-danger btn-flat block_inline" ng-show="!vm.isEdit" ng-click="vm.cancel()">取消</button>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12 column">
                             <form role="form" class="form-horizontal">
                                 <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
                                     <tr>
                                         <td class="view_title">訂單編號</td>
-                                        <td class="view_content1"><input type="text" class="k-textbox" /></td>
+                                        <td class="view_content1"><input type="text" class="k-textbox" ng-model="vm.order.VOU_SALE" /></td>
                                         <td class="view_title">狀態</td>
                                         <td class="view_content4">
-                                            <select ng-model="vm.order_status" kendo-drop-down-list k-options="vm.order_status"></select>
+                                            <select ng-model="vm.order.STAT_MARK" kendo-drop-down-list k-options="vm.order_status"></select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="view_title">客戶名稱</td>
-                                        <td class="view_content1"><input type="text" class="k-textbox" /></td>
+                                        <td class="view_content1"><input type="text" class="k-textbox" ng-model="vm.order.CUST_NAME" /></td>
                                         <td class="view_title" rowspan="2">備註</td>
                                         <td class="view_content4" rowspan="2">
-                                            <textarea rows="5" cols="5" style="width: 98%; height: 100px; margin: 0 auto;"></textarea>
+                                            <textarea rows="5" cols="5" style="width: 98%; height: 100px; margin: 0 auto;" ng-model="vm.order.MEMO"></textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="view_title">業務名稱</td>
-                                        <td class="view_content1"><input type="text" class="k-textbox" /></td>
+                                        <td class="view_content1"><input type="text" class="k-textbox" ng-model="vm.order.SALE_NAME" /></td>
                                     </tr>
                                     <tr>
                                         <td class="view_title">簽收照片&nbsp;<i class="fa fa-camera"></i></td>
                                         <td class="view_content1" colspan="3">
-                                            <input type="file" class="btn btn-default" />
-                                            <div class="timeline-body">
-                                                <img src="http://placehold.it/150x100" alt="" class="margin">
+                                            <div class="product_edit_img edit" style="background-image: url({{vm.order.RECEIPT_BASE64}}); float: left;">
+                                                <input type="file" class="upload" file-model="vm.order.RECEIPT_FILE" onchange="angular.element(this).scope().handleFileImg()" />
+                                                <div class="upload_btn"><i class="fa fa-camera"></i>&nbsp;上傳圖片</div>
                                             </div>
+                                            <button class="btn btn-primary zoom_in" ng-click="clickToOpen()"><i class="glyphicon glyphicon-zoom-in"></i> 檢視圖片</button>
                                         </td>
                                     </tr>
                                 </table>
@@ -62,72 +71,49 @@
 
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-md-12 column">
                             <div class="manage_title">
-                                儲存日期：<input type="date" class="k-datepicker-calendar" id="Stored_Date" />
+                                時間戳記：{{vm.order.TIME_MARK}}
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                總價：<input type="text" class="k-textbox k-number" placeholder="請輸入數字" onkeyup="return ValidateNumber($(this),value)" /> 元
+                                總價：{{vm.order.AMT}} 元
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-md-12 column">
-                            <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+                            <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered" ng-repeat="item in vm.order.Details">
                                 <tr>
-                                    <td rowspan="3" class="view_img">
-                                        <div class="product_img" style="background-image: url(appImg/20150401092514_47176.jpg)"></div>
+                                    <td rowspan="4" class="view_img">
+                                        <div class="product_img" style="background-image: url({{item.PHOTO}})"></div>
                                     </td>
-                                    <td class="view_title">品名</td>
-                                    <td class="view_content1">統一布丁</td>
-                                    <td class="view_title">訂價</td>
-                                    <td class="view_content2">1000</td>
-                                    <td rowspan="3" class="view_order_edit">
-                                        數量：<input type="text" class="k-textbox count" onkeyup="return ValidateNumber($(this),value)" />&nbsp;&nbsp;
-                                        複價：1111
+                                    <td class="view_title">商品代號</td>
+                                    <td class="view_content1">{{item.PROD_ID}}</td>
+                                    <td class="view_title">訂價(大)</td>
+                                    <td class="view_content4">{{item.UNIT_PRICE}}</td>
+                                    <td rowspan="4" class="view_edit" ng-show="!vm.isEdit">
+                                        <button class="btn btn-sm btn-danger" ng-click="vm.removeItem(item)"><i class="glyphicon glyphicon-remove-circle"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td rowspan="2" class="view_title">
-                                        規格簡述
+                                    <td class="view_title">
+                                        商品名稱
                                     </td>
-                                    <td rowspan="2">1111111</td>
+                                    <td class="view_content1">{{item.PROD_NAME}}</td>
                                     <td class="view_title">既有庫存量</td>
-                                    <td class="view_content2">20</td>
+                                    <td class="view_content4">{{item.DLAST_QTYI}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="view_title">計量單位</td>
-                                    <td class="view_content2">CS</td>
-                                </tr>
-                            </table>
-
-                            <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
-                                <tr>
-                                    <td rowspan="3" class="view_img">
-                                        <div class="product_img" style="background-image: url(appImg/4bf9870ddaaaa.jpg)"></div>
-                                    </td>
-                                    <td class="view_title">品名</td>
-                                    <td class="view_content1">統一泡麵</td>
-                                    <td class="view_title">訂價</td>
-                                    <td class="view_content2">50</td>
-                                    <td rowspan="3" class="view_order_edit">
-                                        數量：<input type="text" class="k-textbox count" onkeyup="return ValidateNumber($(this),value)" />&nbsp;&nbsp;
-                                        複價：2222
-                                    </td>
+                                    <td class="view_title">計量單位(大)</td>
+                                    <td class="view_content1">{{item.OUNIT_ID}}</td>
+                                    <td class="view_title">數量(大)</td>
+                                    <td class="view_content4"><input type="text" class="k-textbox count" onkeyup="return ValidateNumber($(this),value)" ng-model="item.QTYI" ng-change="vm.updateProductAmout(item)" /></td>
                                 </tr>
                                 <tr>
-                                    <td rowspan="2" class="view_title">
-                                        規格簡述
-                                    </td>
-                                    <td rowspan="2"></td>
-                                    <td class="view_title">既有庫存量</td>
-                                    <td class="view_content2">10</td>
-                                </tr>
-                                <tr>
-                                    <td class="view_title">計量單位</td>
-                                    <td class="view_content2">BW</td>
+                                    <td class="view_title">計量單位(小)</td>
+                                    <td class="view_content1">{{item.BASE_IDname}}</td>
+                                    <td class="view_title">數量(小)</td>
+                                    <td class="view_content4"><input type="text" class="k-textbox count" onkeyup="return ValidateNumber($(this),value)" ng-model="item.QTYF" ng-change="vm.updateProductAmout(item)" /></td>
                                 </tr>
                             </table>
                         </div>
@@ -140,6 +126,9 @@
         </div>
     </div>
 
+    <script type="text/ng-template" id="showImg.html">
+        <img ng-src="{{vm.order.RECEIPT_BASE64}}" style="width: 100%;" />
+    </script>
 
 
 </section><!-- /.content -->

@@ -10,18 +10,18 @@
 	    views: {
 	        '@': {
 	            templateUrl: 'appPages/m/main.html',
-                controller:''
+                controller:'MainCtrl'
 	        }
 	    },
 	    resolve: {
 	        bodyClass: ['$rootScope', function ($rootScope) {
 	            $rootScope.bodyClass = 'skin-blue layout-boxed sidebar-mini fixed';
-	            $rootScope.wrapperClass = 'wrapper';
+	            //$rootScope.wrapperClass = 'wrapper';
 	        }],
-	        //user: 'User',
-	        //authenticationRequired: ['user', function (user) {
-	        //    user.isAuthenticated();
-	        //}]
+	        user: 'User',
+	        authenticationRequired: ['user', function (user) {
+	            user.isAuthenticated();
+	        }]
 	    }
 	})
     ;

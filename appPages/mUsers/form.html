@@ -33,6 +33,18 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="col-sm-4 control-label" for="業務代號">業務代號</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" ng-model="vm.theUser.EMP_ID" ng-disabled="vm.isEdit"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="業務姓名">業務姓名</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" ng-model="vm.theUser.EMP_NAME" />
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-sm-4 control-label" for="使用者名稱">使用者名稱</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" ng-model="vm.theUser.UserName" />
@@ -56,14 +68,14 @@
                                     <input type="text" class="form-control" ng-model="vm.theUser.Email" />
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label class="col-sm-4 control-label" for="">權限</label>
                                 <div class="col-sm-8 block_inline">
                                     <label class="checkbox-inline" ng-repeat="item in vm.allGroups">
-                                        <input type="checkbox" checklist-model="vm.theUserGroups" checklist-value="item.Id" />{{item.Name}}
+                                        <input type="checkbox" checklist-model="vm.theUserGroups" checklist-value="item.Id" />
                                     </label>
                                 </div>
-                            </div>
+                            </div>-->
                             <hr/>
                             <div class="form-group" ng-if="vm.isEdit">
                                 <label class="col-sm-4 control-label" for="重設密碼">重設密碼</label>

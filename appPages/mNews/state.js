@@ -56,6 +56,36 @@
         	    }]
         	}
         })
+                    .state('m.News.dlist', {
+                        url: '/dlist',
+                        views: {
+                            'content@m': {
+                                templateUrl: 'appPages/mNews/dlist.html',
+                                controller: 'DlistNewsCtrl'
+                            }
+                        },
+                        resolve: {
+                            loadcustomerListCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                // you can lazy load files for an existing module
+                                return $ocLazyLoad.load('appPages/mNews/dlist.js');
+                            }]
+                        }
+                    })
+            .state('m.News.detail', {
+                url: '/detail',
+                views: {
+                    'content@m': {
+                        templateUrl: 'appPages/mNews/detail.html',
+                        controller: 'DetailNewsCtrl'
+                    }
+                },
+                resolve: {
+                    loadcustomerListCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        // you can lazy load files for an existing module
+                        return $ocLazyLoad.load('appPages/mNews/detail.js');
+                    }]
+                }
+            })
     ;
 
 }]);

@@ -1,4 +1,4 @@
-﻿app.factory('CustomersFactory', ['$http', 'UrlHelper', function ($http, UrlHelper) {
+﻿app.factory('CustomersFactory', ['$http', 'UrlHelper', '$q', '$timeout', function ($http, UrlHelper, $q, $timeout) {
     
     return {
 
@@ -7,6 +7,28 @@
             var url = UrlHelper.prepareUrl('api/Customers?q=' + ppKeyword);
             return $http.get(url);
         },
+
+        getAutoCompleteOptions: function (data, i) {
+            var moviedata = $q.defer();
+            var movies;
+            var moreMovies = [];
+
+            for (var j = 0; j < data.length; j++) {
+                moreMovies.push(data[j].CUST_NAME);
+            }
+
+            if (i && i.indexOf('T') != -1)
+                movies = moreMovies;
+            else
+                movies = moreMovies;
+
+            $timeout(function () {
+                moviedata.resolve(movies);
+            }, 1000);
+
+            return moviedata.promise
+        },
+
 
         // crud
         getAll: function () {
@@ -25,8 +47,12 @@
             var url = UrlHelper.prepareUrl('api/Customers?start=' + ppDappStartte + '&end=' + ppEnd);
             return $http.get(url);
         },
-        getByName: function (ppObj) {
-            var url = UrlHelper.prepareUrl('api/Customers?name=' + ppObj.Name);
+        getByName: function (pName) {
+            var url = UrlHelper.prepareUrl('api/Customers?name=' + pName);
+            return $http.get(url);
+        },
+        getById: function (pId) {
+            var url = UrlHelper.prepareUrl('api/Customers/' + pId);
             return $http.get(url);
         },
         create: function (ppObj) {
@@ -34,7 +60,7 @@
             return $http.post(url, ppObj);
         },
         update: function (ppObj) {
-            var url = UrlHelper.prepareUrl('api/Customers/' + ppObj.Id);
+            var url = UrlHelper.prepareUrl('api/Customers/' + ppObj.CUST_ID);
             return $http.put(url, ppObj);
         },
         remove: function (ppId) {

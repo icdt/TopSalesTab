@@ -26,7 +26,7 @@
 	    })
 //-------List-----------------------------------------------
 	    .state('m.Products.list', {
-	        url: '/list',
+	        url: '/list/:cate',
 	        views: {
 	            'content@m': {
 	                templateUrl: 'appPages/mProducts/list.html',
@@ -42,7 +42,7 @@
 	    })
 //-------mList-----------------------------------------------
 	    .state('m.Products.mlist', {
-	        url: '/mlist',
+	        url: '/mlist/:cate',
 	        views: {
 	            'content@m': {
 	                templateUrl: 'appPages/mProducts/mlist.html',
@@ -58,7 +58,7 @@
 	    })
 //--------detail---------------------------------------------
         .state('m.Products.detail', {
-            url: '/detail',
+            url: '/detail/:productId',
             views: {
                 'content@m': {
                     templateUrl: 'appPages/mProducts/detail.html',
@@ -74,23 +74,23 @@
         })
 //--------Create----------------------------------------------
     	.state('m.Products.create', {
-    	    url: '/create',
+    	    url: '/create/:cate',
     	    views: {
     	        'content@m': {
     	            templateUrl: 'appPages/mProducts/form.html',
-    	            controller: 'CreateicdtdataCtrl'
+    	            controller: 'CreateProductsCtrl'
     	        }
     	    },
     	    resolve: {
     	        loadcustomerListCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
     	            // you can lazy load files for an existing module
-    	            return $ocLazyLoad.load('appPages/mCRUD/create.js');
+    	            return $ocLazyLoad.load('appPages/mProducts/create.js');
     	        }]
     	    }
     	})
 //--------edit---------------------------------------------
         .state('m.Products.edit', {
-            url: '/edit',
+            url: '/edit/:productId',
             views: {
                 'content@m': {
                     templateUrl: 'appPages/mProducts/form.html',

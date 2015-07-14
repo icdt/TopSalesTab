@@ -22,10 +22,13 @@ app.service('User', ['$http', '$window', 'UrlHelper', function ($http, $window, 
     }
 
     var userData = {
+      Id: '',
       isAuthenticated: false,
       username: '',
       bearerToken: '',
-      expirationDate: null
+      expirationDate: null,
+      EMP_ID: '',
+      EMP_NAME: ''
     };
 
     var nextState = {
@@ -120,7 +123,6 @@ app.service('User', ['$http', '$window', 'UrlHelper', function ($http, $window, 
     this.authenticate = function (username, password, successCallback, errorCallback, persistData) {
 
       var url = UrlHelper.prepareUrl('token');
-       
 
       this.removeAuthentication();
       var config = {
@@ -139,21 +141,42 @@ app.service('User', ['$http', '$window', 'UrlHelper', function ($http, $window, 
           userData.bearerToken = data.access_token;
           userData.expirationDate = new Date(data['.expires']);
           setHttpAuthHeader();
-          if (persistData === true) {
-            saveData();
-          }
-          if (typeof successCallback === 'function') {
-            successCallback();
-          }
+          
+          // 取得更多使用者資訊
+            _getUserInfo().success(function (data) {
+
+              userData.Id = data.Id;
+              userData.EMP_ID = data.EMP_ID;
+              userData.EMP_NAME = data.EMP_NAME;
+              if (persistData === true) {
+                  saveData();
+              }
+              if (typeof successCallback === 'function') {
+                  successCallback();
+              }
+
+          }).error(function (err) {
+              console.log("無法取得使用者資訊: ",err);
+          });
         })
         .error(function(data) {
           if (typeof errorCallback === 'function') {
-            if (data.error_description) {
-              errorCallback(data.error_description);
+            if (data) {
+              errorCallback(data);
             } else {
               errorCallback('Unable to contact server; please, try again later.');
             }
           }
         });
     };
+
+    this.getUserInfo = function () {
+        _getUserInfo();
+    };
+
+    function _getUserInfo()
+    {
+        var url = UrlHelper.prepareUrl('api/Account/UserInfo');
+        return $http.get(url);
+    }
   }]);

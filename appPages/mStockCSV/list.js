@@ -6,23 +6,46 @@ angular.module('app', []).controller('ListStockCSVCtrl', ['$scope', '$state', '$
 
     // 動作
     $scope.vm.uploadStockCSV = function () {
-        debugger;
-        var file = $scope.myFile;
-        debugger;
-        console.log('file is ' + JSON.stringify(file));
-        var uploadUrl = "../../mvc/StockCSV";
-        fileUpload.uploadFileToUrl(file, uploadUrl).success(function (data) {
-            location.reload();
-        }).error(function () {
-            alert('上傳錯誤');
+        if (confirm("上傳檔案視網路速度需一至數分鐘")) {
+            $("#loading").fadeIn("fast");
+            var file = $scope.myFile;
+            console.log('file is ' + JSON.stringify(file));
+            var uploadUrl = "../../mvc/StockCSV";
+            fileUpload.uploadFileToUrl(file, uploadUrl).success(function (data) {
+                ProductsFactory.getAll().success(function (data) {
+                    $scope.gridOptions.data = data;
+                    $("#loading").fadeOut("fast");
+                }).error(function (err) {
+                    console.log(err);
+                });
+            }).error(function (xhr) {
+                alert(xhr);
+                $("#loading").fadeOut("fast");
+            });
+        } else {
+            return;
+        }
+       
+    };
+
+    $scope.vm.downloadStockCSV = function () {
+        ProductsFactory.download().success(function (data) {
+            //debugger;
+            var temp = document.createElement('a');
+            temp.setAttribute('href', 'data:text/text;charset=utf-8,' + encodeURI(data));
+            temp.setAttribute('download', "Stocks.txt");
+            temp.click();
+        
+        }).error(function (data) {
+            debugger;
         });
     };
 
 
+   
+
     // 取得data填充ui grid
     ProductsFactory.getAll().success(function (data) {
-        debugger;
-
         $scope.gridOptions.data = data;
     }).error(function (err) {
         console.log(err);
@@ -34,29 +57,12 @@ angular.module('app', []).controller('ListStockCSVCtrl', ['$scope', '$state', '$
     $scope.gridOptions.columnDefs = [
        //{ name: 'Edit', cellTemplate: '<button type="button" class="btn btn-small bg-purple btn-flat" ng-click="grid.appScope.goToUpdateForm(row.entity)" helf= >編輯</button> ', width: 100, pinnedLeft: true },
        //{ name: 'Delete', cellTemplate: '<button type="button" class="btn btn-small btn-danger btn-flat" ng-click="grid.appScope.gotToDeleteForm(row.entity)" helf= >刪除</button> ', width: 100, pinnedLeft: true },
-       { name: 'ProductId', displayName: '產品', width: 100 },
-       { name: 'NickName', displayName: '部門名稱', width: 100 },
-       //{ name: 'TempFieldA', displayName: '新欄位', width: 100 },
-       //{ name: 'TempFieldB', displayName: '新欄位', width: 100 },
-       //{ name: 'TempFieldC', displayName: '新欄位', width: 100 },
-       { name: 'KindCategory', displayName: '新欄位', width: 100 },
-       { name: 'Kind', displayName: '新欄位', width: 100 },
-       { name: 'Category', displayName: '新欄位', width: 100 },
-       { name: 'Price', displayName: '新欄位', width: 100 },
-       { name: 'ConversionFactor', displayName: '新欄位', width: 100 },
-       { name: 'StandardUnit', displayName: '新欄位', width: 100 },
-       { name: 'MinimalTradeNumber', displayName: '新欄位', width: 100 },
-       { name: 'MinimalUnit', displayName: '新欄位', width: 100 },
-       //{ name: 'TempFieldD', displayName: '新欄位', width: 100 },
-       { name: 'Barcode', displayName: '新欄位', width: 100 },
-       //{ name: 'TempFieldE', displayName: '新欄位', width: 100 },
-       //{ name: 'TempFieldF', displayName: '新欄位', width: 100 },
-       { name: 'MinimalBarcode', displayName: '新欄位', width: 100 },
-       //{ name: 'TempFieldG', displayName: '新欄位', width: 100 },
-       { name: 'CatergoryName', displayName: '新欄位', width: 100 },
-       //{ name: 'TempFieldH', displayName: '新欄位', width: 100 },
-       //{ name: 'TempFieldI', displayName: '新欄位', width: 100 },
-       { name: 'CatergoryName', displayName: '新欄位', width: 100 }
+       { name: 'PROD_ID', displayName: '產品', width: 100 },
+       { name: 'PROD_NAME', displayName: '部門名稱', width: 100 },
+       { name: 'FSECT_ID', displayName: '部別', width: 100 },
+       { name: 'SUB_ID', displayName: '中類代號', width: 100 },
+       { name: 'SUB_NAME', displayName: '中類名稱', width: 100 },
+
     ];
 
 }]);

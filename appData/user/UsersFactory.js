@@ -36,6 +36,10 @@
         remove: function (ppId) {
             var url = UrlHelper.prepareUrl('api/users/' + ppId);
             return $http.delete(url);
+        },
+        changePass: function (ppObj) {
+            var url = UrlHelper.prepareUrl('api/users/newpassword');
+            return $http.put(url, ppObj);
         }
     };
 

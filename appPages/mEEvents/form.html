@@ -1,15 +1,15 @@
 ﻿<!-- Content Header (Page header) -->
 <section class="content-header">
-    <button type="submit" class="btn btn-default btn-flat" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>回行程規劃</button>
+    <button type="submit" class="btn btn-default btn-flat" ui-sref="m.EEvents.plan"><span class="glyphicon glyphicon-chevron-left"></span>回行程規劃</button>
     <br />
     <br />
     <h1>
-        項目明細
+        拜訪計劃
         <small></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> 行程規劃 </a></li>
-        <li class="active">項目明細</li>
+        <li><a ui-sref="m.Home.index"><i class="fa fa-dashboard"></i> 首頁 </a></li>
+        <li class="active">行程規劃/拜訪計劃</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -18,12 +18,104 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box box-success">
-                <div class="box-header">
+                <!--<div class="box-header">
                     <h3 class="box-title"></h3>
-                </div><!-- /.box-header -->
+                </div>--><!-- /.box-header -->
                 <div class="box-body">
+                    <div class="row" style="width:100%;text-align:right">
+                        <div class="col-md-12">
+                            <div class="form-group block_inline">
+                                <label for="btn"></label><br />
+                                <button type="button" name="save" class="btn btn-success btn-flat block_inline" ng-click="vm.save()">儲存</button>
+                                <!--<button type="button" name="save" class="btn btn-success block_inline btn-flat" ng-click="vm.save()">儲存</button>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 column">
+                            <form role="form" class="form-horizontal" name="signup_form" novalidate>
+                                <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered customer">
+                                    <tr>
+                                        <td class="view_title">*項目名稱</td>
+                                        <td class="view_content1">
+                                            <input type="text" name="itemname" class="k-textbox" ng-model="vm.eevent.TITLE" required />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.itemname.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.itemname.$error.required">
+                                                    項目名稱為必填欄位!!
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="view_title">拜訪日期</td>
+                                        <td class="view_content4">
+                                            <input type="text"  id="VISIT_DATE" kendo-date-picker k-ng-model="vm.eevent.VISIT_DATE" k-format="'yyyy/MM/dd'" class="k-datepicker-calendar" />
+                                            <br />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="view_title">*客戶名稱</td>
+                                        <td class="view_content1">
+                                            <autocomplete name="CUST_NAME" class="k-textbox" ng-model="vm.eevent.CUST_NAME" attr-placeholder="例: 優典行" click-activation="true" data="autocomplete.allCustomersName" on-type="autocomplete.searchCustomer" on-select="autocomplete.assignCustomer" required style="width: 80%"></autocomplete>
+                                            <img ng-show="autocomplete.isSearchCustomer" src="/aApp/backend/appImg/loading_redball.gif" width="20" height="20" />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.CUST_NAME.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.CUST_NAME.$error.required">
+                                                    客戶名稱為必填欄位!!
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="view_title">開始時間</td>
+                                        <td class="view_content1">
+                                            <input type="text" class="k-timepicker" kendo-time-picker k-ng-model="vm.eevent.START_TIME" k-format="'HH:mm'" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="view_title">*業務員</td>
+                                        <td class="view_content1">
+                                            <autocomplete name="SALE_NAME" class="k-textbox" ng-model="vm.eevent.EMP_NAME" attr-placeholder="請輸入業務姓名" click-activation="true" data="autocomplete.allSalesman" on-type="autocomplete.searchSalesman" on-select="autocomplete.assignSalesman" required style="width: 80%"></autocomplete>
+                                            <img ng-show="autocomplete.isSearchSalesman" src="/aApp/backend/appImg/loading_redball.gif" width="20" height="20" />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.SALE_NAME.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.SALE_NAME.$error.required">
+                                                    業務名稱為必填欄位!!
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="view_title">結束時間</td>
+                                        <td class="view_content4">
+                                            <input type="text" class="k-timepicker" kendo-time-picker k-ng-model="vm.eevent.END_TIME" k-format="'HH:mm'" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="view_title">規劃事項</td>
+                                        <td class="view_content1" colspan="3">
+                                            <textarea class="form-control" ng-model="vm.eevent.PLAN"></textarea>
+                                            <!--<textarea type="text"  />-->
+                                            <!--<input type="text" class="k-textbox" ng-model="vm.customer.COMP_MARK" />-->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="view_title">拜訪記錄</td>
+                                        <td class="view_content1" colspan="3">
+                                            <textarea class="form-control" ng-model="vm.eevent.CONTENT"></textarea>
+                                            <!--<textarea type="text" class="form-control" ng-model="vm.eevent.CONTENT" />-->
+                                            <!--<input type="text" class="k-textbox" ng-model="vm.customer.COMP_MARK" />-->
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
 
-                    <form role="form" class="form-horizontal" style="margin: 0 auto;">
+
+
+                    <!--<form name="signup_form" class="form-horizontal" style="margin: 0 auto;" novalidate>
                         <div class="row" style="width:100%;text-align:right">
                             <div class="form-group">
                                 <label class="col-sm-8 control-label" for="actions">&nbsp;</label>
@@ -32,100 +124,131 @@
                                     <button type="submit" class="btn btn-danger btn-flat block_inline" ng-if="vm.isEdit" ng-click="vm.delete()">刪除</button>
                                 </div>
                             </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="nickname">項目名稱</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="nickname">*項目名稱</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="itemname" class="k-textbox" ng-model="vm.eevent.TITLE" required/>
+                                    </div>
+                                    <div class="error"
+                                         ng-show="signup_form.itemname.$invalid && signup_form.submitted">
+                                        <label class="col-sm-4 control-label" for="nickname"></label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.nickname" />
+                                            <small class="error"
+                                                   ng-show="signup_form.itemname.$error.required">
+                                                項目名稱為必填欄位!!
+                                            </small>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="firstname">客戶名稱</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.firstname" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="lastname">日期</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.lastname" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="lastname">截止日期</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.lastname" />
-                                        </div>
-                                    </div>
-
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-
-                                        <label class="col-sm-4 control-label" for="nickname">業務員</label>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="firstname">*客戶名稱</label>
+                                    <div class="col-sm-8">
+                                        <autocomplete name="CUST_NAME" class="k-textbox" ng-model="vm.eevent.CUST_NAME" attr-placeholder="客戶名稱" click-activation="true" data="vm.autocomplete.allCustomersName" on-type="vm.doSomething1" on-select="vm.doSomethingElse1" required></autocomplete>
+                                       
+                                    </div>
+                                    <div class="error"
+                                         ng-show="signup_form.CUST_NAME.$invalid && signup_form.submitted">
+                                        <label class="col-sm-4 control-label" for="nickname"></label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.nickname" />
+                                            <small class="error"
+                                                   ng-show="signup_form.CUST_NAME.$error.required">
+                                                客戶名稱為必填欄位!!
+                                            </small>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="firstname">地點</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.firstname" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="lastname">時間</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.lastname" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="lastname">優先順序</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.lastname" />
-                                        </div>
-                                    </div>
-
-
-
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="form-group">
 
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="lastname">規劃事項</label>
+                                    <label class="col-sm-4 control-label" for="nickname">*業務員</label>
+                                    <div class="col-sm-8">
+                                        <autocomplete name="EMP_NAME" class="k-textbox" ng-model="vm.eevent.EMP_NAME" attr-placeholder="業務名稱" click-activation="true" data="vm.autocomplete.allSalesName" on-type="vm.doSomething2" on-select="vm.doSomethingElse2" required></autocomplete>
+                                    </div>
+                                    <div class="error"
+                                         ng-show="signup_form.EMP_NAME.$invalid && signup_form.submitted">
+                                        <label class="col-sm-4 control-label" for="nickname"></label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.lastname" />
+                                            <small class="error"
+                                                   ng-show="signup_form.EMP_NAME.$error.required">
+                                                業務名稱為必填欄位!!
+                                            </small>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="lastname">拜訪記錄</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.lastname" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="lastname">附加檔案</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.lastname" />
-                                        </div>
-                                    </div>
-                                 
-
-
                                 </div>
+                                
+
                             </div>
+                            <div class="col-md-4">
+                                
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="firstname">地點</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="vm.eevent.LOCATION" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="lastname">拜訪日期</label>
+                                    <div class="col-sm-8">
+                                        <input id="VISIT_DATE" kendo-date-picker k-ng-model="vm.eevent.VISIT_DATE" k-format="'yyyy/MM/dd'" class="k-datepicker-calendar" />
+                                        
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="lastname">開始時間</label>
+                                    <div class="col-sm-8">
+                                        <input class="k-timepicker" kendo-time-picker k-ng-model="vm.eevent.START_TIME" k-format="'HH:mm'" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="lastname">結束時間</label>
+                                    <div class="col-sm-8">
+                                        <input class="k-timepicker" kendo-time-picker k-ng-model="vm.eevent.END_TIME" k-format="'HH:mm'" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="lastname">優先順序</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" ng-model="eevent.STATUS" />
+                                    </div>
+                                </div>
 
 
 
+                            </div>
+                        </div>
+                        <div class="row" style="margin-left:0px">
+                            
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="lastname">規劃事項</label>
+                                    <div class="col-lg-9">
+                                        <textarea type="text" class="form-control" ng-model="vm.eevent.PLAN" style="height:100px;width:60%"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" for="lastname">拜訪記錄</label>
+                                    <div class="col-lg-9">
+                                        <textarea type="text" class="form-control" ng-model="vm.eevent.CONTENT" style="height:100px;width:60%"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" for="lastname">附加檔案</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" ng-model="eevent.FILE" />
+                                    </div>
+                                </div>
 
-</form>
+
+
+                           
+                        </div>
+                    </form>-->
+                </div>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
-        </div>
+       
 
     </div>
 

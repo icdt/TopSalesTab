@@ -5,8 +5,8 @@
         <small></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> icdtview </a></li>
-        <li class="active">訂單記錄</li>
+        <li><a ui-sref="m.Home.index"><i class="fa fa-dashboard"></i> 首頁 </a></li>
+        <li class="active">帳務管理/訂單記錄</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -21,31 +21,30 @@
                 <div class="box-body">
                     <div class="row" style="width:100%;text-align:right">
                         <div class="form-group block_inline">
-                            <!--<label for="起始時間">起始時間</label><br />-->
+                            <label for="起始時間">起始時間</label><br />
                             <!--<input type="date" class="form-control" ng-model="vm.start" ng-init="vm.start = newDate()"/>-->
-
-                            <input type="date" class="form-control" ng-model="record.ReceiveStartTime" ng-init="record.ReceiveStartTime = addDate(-2)" />
+                            <input kendo-date-picker k-ng-model="vm.START" k-format="'yyyy/MM/dd'" class="k-datepicker-calendar" />
                         </div>
                         <div class="form-group block_inline">
-                            <!--<label for="終止時間">終止時間</label><br />-->
+                            <label for="終止時間">終止時間</label><br />
                             <!--<input type="date" class="form-control" ng-model="vm.end" ng-init="vm.end = addDate(2)" />-->
-                            <input type="date" class="form-control" ng-model="record.ReceiveEndTime" ng-init="record.ReceiveEndTime = newDate()" />
+                            <input kendo-date-picker k-ng-model="vm.END" k-format="'yyyy/MM/dd'" class="k-datepicker-calendar" />
                         </div>
                         <div class="form-group block_inline" style="width:100px">
-                            <!--<label for="客戶名稱">客戶名稱</label><br />-->
-                            <input type="text" class="form-control" ng-model="vm.customer" placeholder="客戶名稱" />
+                            <label for="客戶名稱">客戶名稱</label><br />
+                            <input type="text" class="form-control" ng-model="vm.customer.CUST_NAME" placeholder="客戶名稱" />
+                        </div>
+                        <!--<div class="form-group block_inline">
+                            <label for="btn"></label><br />
+                            <button type="button" class="btn btn-success block_inline btn-flat" ng-click="">未收款</button>
                         </div>
                         <div class="form-group block_inline">
                             <label for="btn"></label><br />
-                            <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">未收款</button>
-                        </div>
+                            <button type="button" class="btn btn-success block_inline btn-flat" ng-click="">已收款</button>
+                        </div>-->
                         <div class="form-group block_inline">
                             <label for="btn"></label><br />
-                            <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">已收款</button>
-                        </div>
-                        <div class="form-group block_inline">
-                            <label for="btn"></label><br />
-                            <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">查詢</button>
+                            <button type="button" class="btn btn-success block_inline btn-flat" ng-click="vm.fetchData()">查詢</button>
                         </div>
                     </div>
                     <div class="row">

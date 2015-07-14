@@ -3,17 +3,16 @@
     <h1>
         <button type="submit" class="btn btn-default btn-flat" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>回列表</button>
         &nbsp;
-        <a href="#"><i class="fa fa-dashboard"></i> 產品型錄 </a>
-        \ 大類型 \ 子分類 \ 產品管理
+        產品管理
         <small></small>
     </h1>
-    <!--<ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> icdtview </a></li>
-        <li class="active">列表</li>
-    </ol>-->
-    <div class="edit_btn">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 產品與庫存管理 </a></li>
+        <li class="active">大類型 > 子分類 > 產品管理</li>
+    </ol>
+    <!--<div class="edit_btn">
         <button type="submit" class="btn btn-primary btn-flat block_inline" ng-click="vm.save()">儲存</button>
-    </div>
+    </div>-->
 
 </section>
 <!-- Main content -->
@@ -28,39 +27,112 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="row">
+                        <div class="row" style="width:100%;text-align:right">
+                            <div class="col-md-12">
+                                <div class="form-group block_inline">
+                                    <label for="btn"></label><br />
+                                    <button type="submit" class="btn btn-primary btn-flat block_inline" ng-click="vm.save()">儲存</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-12 column">
-                            <form role="form" class="form-horizontal">
+                            <form role="form" class="form-horizontal" name="signup_form" novalidate>
                                 <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
                                     <tr>
-                                        <td rowspan="4" class="view_img">
-                                            <div class="product_edit_img" style="background-image: url(appImg/20150401092514_47176.jpg)"></div>
+                                        <td rowspan="3" class="view_img">
+                                            <div class="product_edit_img edit" style="background-image: url({{vm.theProduct.PHOTO_BASE64}})">
+                                                <input type="file" class="upload" file-model="vm.theProduct.PHOTO_FILE" onchange="angular.element(this).scope().handleFileImg()" />
+                                                <div class="upload_btn"><i class="fa fa-camera"></i>&nbsp;上傳圖片</div>
+                                            </div>
                                         </td>
-                                        <td class="view_title">品名</td>
-                                        <td class="view_content4"><input type="text" class="k-textbox name" /></td>
-                                        <td class="view_title">訂價</td>
-                                        <td class="view_content2"><input type="text" class="k-textbox" placeholder="請輸入數字" onkeyup="return ValidateNumber($(this),value)" /></td>
+                                        <td class="view_title">*產品代號</td>
+                                        <td class="view_content1">
+                                            <input type="text" class="k-textbox name" ng-model="vm.theProduct.PROD_ID" name="PROD_ID" required />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.PROD_ID.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.PROD_ID.$error.required">
+                                                    產品代號為必填欄位!!
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="view_title">*訂價(大)</td>
+                                        <td class="view_content2">
+                                            <input type="text" class="k-textbox" placeholder="請輸入數字" onkeyup="return ValidateNumber($(this),value)" ng-model="vm.theProduct.SALE_PRICE" name="SALE_PRICE" required />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.SALE_PRICE.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.SALE_PRICE.$error.required">
+                                                    訂價為必填欄位!!
+                                                </small>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3" class="view_title">
-                                            規格簡述
+                                        <td class="view_title">*產品名稱</td>
+                                        <td class="view_content1">
+                                            <input type="text" class="k-textbox" ng-model="vm.theProduct.PROD_NAME" name="PROD_NAME" required />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.PROD_NAME.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.PROD_NAME.$error.required">
+                                                    產品名稱為必填欄位!!
+                                                </small>
+                                            </div>
                                         </td>
-                                        <td rowspan="3" class="view_ckeditor">
-                                            <textarea rows="5" cols="5" style="width: 98%; height: 100px; margin: 0 auto;"></textarea>
+                                        <td class="view_title">*既有庫存量</td>
+                                        <td class="view_content2">
+                                            <input type="text" class="k-textbox" placeholder="請輸入數字" onkeyup="return ValidateNumber($(this),value)" ng-model="vm.theProduct.DLAST_QTYI" name="DLAST_QTYI" required />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.DLAST_QTYI.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.DLAST_QTYI.$error.required">
+                                                    既有庫存量為必填欄位!!
+                                                </small>
+                                            </div>
                                         </td>
-                                        <td class="view_title">規格</td>
-                                        <td class="view_content2"><input type="text" class="k-textbox" /></td>
+                                        <!--<td class="view_title">規格</td>
+                                        <td class="view_content2"><input type="text" class="k-textbox" /></td>-->
                                     </tr>
                                     <tr>
-                                        <td class="view_title">既有庫存量</td>
-                                        <td class="view_content2"><input type="text" class="k-textbox" placeholder="請輸入數字" onkeyup="return ValidateNumber($(this),value)" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="view_title">計量單位</td>
-                                        <td class="view_content2"><input type="text" class="k-textbox" /></td>
+                                        <td class="view_title">*計量單位(大)</td>
+                                        <td class="view_content1">
+                                            <input type="text" class="k-textbox" ng-model="vm.theProduct.OUNIT_ID" name="OUNIT_ID" required />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.OUNIT_ID.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.OUNIT_ID.$error.required">
+                                                    計量單位(大)為必填欄位!!
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="view_title">*計量單位(小)</td>
+                                        <td class="view_content2">
+                                            <input type="text" class="k-textbox" ng-model="vm.theProduct.BASE_IDname" name="BASE_IDname" required />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.BASE_IDname.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.BASE_IDname.$error.required">
+                                                    計量單位(小)為必填欄位!!
+                                                </small>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" class="view_ckeditor">
-                                            <textarea id="editor1" name="editor1" rows="10" cols="80" style="width: 98%; height: 250px; margin: 0 auto;"></textarea>
+                                            <div>內容介紹</div>
+                                            <textarea name="editor" style="width: 98%; height: 250px; margin: 0 auto;"></textarea>
                                         </td>
                                     </tr>
                                 </table>
@@ -77,6 +149,14 @@
 
 
 </section><!-- /.content -->
+
+<script>
+    var username = "customer1";
+    var folder = "ckeditor";
+    var editor = CKEDITOR.replace('editor', { filebrowserImageUploadUrl: '/mvc/files?userName=' + username + '&folder=' + folder });
+</script>
+
+
 <!--<script>
   (function() {
       $(".jdatepicker").datepicker();

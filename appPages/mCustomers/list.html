@@ -1,12 +1,12 @@
 ﻿<!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        通訊錄
+        搜尋及瀏覽客戶
         <small></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> icdtview </a></li>
-        <li class="active">通訊錄</li>
+        <li><a ui-sref="m.Home.index"><i class="fa fa-dashboard"></i> 顧客關係 </a></li>
+        <li class="active">搜尋及瀏覽客戶</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -21,27 +21,26 @@
                 <div class="box-body">
                     <div class="row" style="width:100%;text-align:right">
                         <div class="col-md-12">
-
                             <div class="form-group block_inline" style="width:100px">
                                 <label for="客戶名稱"></label><br />
-                                <input type="text" class="form-control" ng-model="vm.customer" />
+                                <input type="text" class="form-control" ng-model="vm.strFindCustomer" placeholder="客戶名稱"/>
                             </div>
                             <div class="form-group block_inline">
                                 <label for="btn"></label><br />
-                                <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">查詢</button>
+                                <button type="button" class="btn btn-success block_inline btn-flat" ng-click="vm.searchCustomer()">查詢</button>
                             </div>
                             <div class="form-group block_inline">
                                 <label for="btn"></label><br />
-                                <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">加入待辦事項</button>
+                                <button type="button" class="btn btn-success block_inline btn-flat" ng-click="vm.addEevent()">加入行程</button>
                             </div>
                             <!--<div class="form-group block_inline">
                                 <label for="btn"></label><br />
                                 <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">新增客戶</button>
                             </div>-->
-                            <div class="form-group block_inline">
+                            <!--<div class="form-group block_inline">
                                 <label for="btn"></label><br />
                                 <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">匯入</button>
-                            </div>
+                            </div>-->
 
                             </div>
                         </div>

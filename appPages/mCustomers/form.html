@@ -1,15 +1,14 @@
 ﻿<!-- Content Header (Page header) -->
 <section class="content-header">
-    <button type="submit" class="btn btn-default btn-flat" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>回通訊錄</button>
-    <br />
-    <br />
     <h1>
-        顧客明細
+        <button type="submit" class="btn btn-default btn-flat" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>回通訊錄</button>
+        &nbsp;
+        客戶資料
         <small></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> 通訊錄 </a></li>
-        <li class="active">顧客明細</li>
+        <li><a ui-sref="m.Home.index"><i class="fa fa-dashboard"></i> 顧客關係 </a></li>
+        <li class="active">客戶資料</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -18,119 +17,179 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box box-success">
-                <div class="box-header">
+                <!--<div class="box-header">
                     <h3 class="box-title"></h3>
-                </div><!-- /.box-header -->
+                </div>-->
+                <!-- /.box-header -->
                 <div class="box-body">
+                    <div class="row" style="width:100%;text-align:right">
+                        <div class="col-md-12">
 
-                    <!--<form role="form" class="form-horizontal" style="margin: 0 auto;">-->
-                        <div class="row">
-                            <div class="col-md-12" style="width:100%;text-align:right">
-                                <div class="form-group block_inline">
-                                    <label for="btn"></label><br />
-                                    <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">儲存</button>
-                                </div>
-                                <div class="form-group block_inline">
-                                    <label for="btn"></label><br />
-                                    <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">加入待辦事項</button>
-                                </div>
-                                <div class="form-group block_inline">
-                                    <label for="btn"></label><br />
-                                    <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">查詢計畫與記錄</button>
-                                </div>
-                                <div class="form-group block_inline">
-                                    <label for="btn"></label><br />
-                                    <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">建立訂單</button>
-                                </div>
-                                <div class="form-group block_inline">
-                                    <label for="btn"></label><br />
-                                    <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">查詢訂單記錄</button>
-                                </div>
+                            <div class="form-group block_inline">
+                                <label for="btn"></label><br />
+                                <button type="button" name="save" class="btn btn-success block_inline btn-flat" ng-click="vm.save()">儲存</button>
                             </div>
+                            <div class="form-group block_inline" ng-show="!vm.isEdit">
+                                <label for="btn"></label><br />
+                                <button type="button" class="btn btn-success block_inline btn-flat"  ng-click="vm.addEevent()">加入行程</button>
+                            </div>
+                            <div class="form-group block_inline">
+                                <label for="btn"></label><br />
+                                <button type="button" class="btn btn-success block_inline btn-flat" ng-show="vm.isEdit" ng-click="vm.searchEEvent()">查詢行程</button>
+                            </div>
+                            <div class="form-group block_inline">
+                                <label for="btn"></label><br />
+                                <button type="button" class="btn btn-success block_inline btn-flat" ng-show="vm.isEdit" ng-click="vm.createOrder()">建立訂單</button>
+                            </div>
+                            <div class="form-group block_inline">
+                                <label for="btn"></label><br />
+                                <button type="button" class="btn btn-success block_inline btn-flat" ng-show="vm.isEdit" ng-click="vm.searchOrder()">查詢訂單記錄</button>
+                            </div>
+
                         </div>
-                        <div class="row">
-                            <form role="form" class="form-horizontal" style="margin: 0 auto;">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="nickname">暱稱</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.nickname" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="firstname">姓</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.firstname" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="lastname">名</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.lastname" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="company">所屬公司</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.company" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="un">統編</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.un" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="title">職稱</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.title" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="mobile">手機</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.mobile" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="tel">電話</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.tel" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="email">Email</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.email" />
-                                        </div>
-                                    </div>
+                    </div>
 
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="salename">負責業務名稱</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" ng-model="order.salename" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label" for="id">備忘</label>
-                                        <div class="col-sm-8">
-                                            <textarea type="text" class="form-control" ng-model="order.remark" style="height:200px" />
-                                        </div>
-                                    </div>
-
-
-                                </div>
+                    <div class="row">
+                        <div class="col-md-12 column">
+                            <form role="form" class="form-horizontal" name="signup_form" novalidate>
+                                <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered customer">
+                                    <tr>
+                                        <td class="view_title">*客戶代號</td>
+                                        <td class="view_content1">
+                                            <input type="text" name="CUST_ID" class="k-textbox" ng-model="vm.customer.CUST_ID" required />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.CUST_ID.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.CUST_ID.$error.required">
+                                                    客戶代號為必填欄位!!
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="view_title">*業務員</td>
+                                        <td class="view_content4">
+                                            <autocomplete name="SALE_NAME" class="k-textbox" ng-model="vm.customer.SALE_NAME" attr-placeholder="請輸入業務姓名" click-activation="true" data="autocomplete.allSalesman" on-type="autocomplete.searchSalesman" on-select="autocomplete.assignSalesman" required style="width: 80%"></autocomplete>
+                                            <img ng-show="autocomplete.isSearchSalesman" src="/aApp/backend/appImg/loading_redball.gif" width="20" height="20" />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.SALE_NAME.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.SALE_NAME.$error.required">
+                                                    業務名稱為必填欄位!!
+                                                </small>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="view_title">*客戶名稱</td>
+                                        <td class="view_content1">
+                                            <input name="CUST_NAME" type="text" class="k-textbox" ng-model="vm.customer.CUST_NAME" required />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.CUST_NAME.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.CUST_NAME.$error.required">
+                                                    客戶名稱為必填欄位!!
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="view_title">單位區域代號</td>
+                                        <td class="view_content1">
+                                            <input type="text" class="k-textbox" ng-model="vm.customer.CROAD_ID" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="view_title">地址</td>
+                                        <td class="view_content1">
+                                            <input type="text" class="k-textbox" ng-model="vm.customer.CUST_ADDR" />
+                                        </td>
+                                        <!--<td class="view_title">單位區域名稱</td>
+                                        <td class="view_content4">
+                                            <input type="text" class="k-textbox" ng-model="vm.customer.CROAD_NAME" />
+                                        </td>-->
+                                        <td class="view_title">傳票計算方式</td>
+                                        <td class="view_content1">
+                                            <input type="text" class="k-textbox" ng-model="vm.customer.COMP_MARK" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="view_title">統一編號</td>
+                                        <td class="view_content1">
+                                            <input type="text" class="k-textbox" ng-model="vm.customer.PRE_NO" />
+                                        </td>
+                                        <td class="view_title">發票聯式</td>
+                                        <td class="view_content4">
+                                            <select ng-model="vm.customer.INVO_TYPE" kendo-drop-down-list k-options="select.INVO_TYPE"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="view_title">*負責人</td>
+                                        <td class="view_content1">
+                                            <input name="BOSS" type="text" class="k-textbox" ng-model="vm.customer.BOSS" required />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.BOSS.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.BOSS.$error.required">
+                                                    負責人為必填欄位!!
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="view_title">*電話</td>
+                                        <td class="view_content4">
+                                            <input class="k-textbox" name="tel" ng-minlength=7 ng-maxlength=10 ng-pattern="/^[0-9]+$/" ng-model="vm.customer.TEL" required />
+                                            <br />
+                                            <div class="error"
+                                                 ng-show="signup_form.tel.$invalid && signup_form.submitted">
+                                                <small class="error"
+                                                       ng-show="signup_form.tel.$error.required">
+                                                    電話為必填欄位!!
+                                                </small>
+                                                <small class="error"
+                                                       ng-show="signup_form.tel.$error.minlength">
+                                                    電話號碼至少要7碼!!
+                                                </small>
+                                                <small class="error"
+                                                       ng-show="signup_form.tel.$error.maxlength">
+                                                    電話號碼不能超過10碼!!
+                                                </small>
+                                                <small class="error"
+                                                       ng-show="signup_form.tel.$error.pattern">
+                                                    電話號碼不能含非數字以外的字元!!
+                                                </small>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="view_title">信用額度</td>
+                                        <td class="view_content1">
+                                            <input type="text" class="k-textbox" ng-model="vm.customer.TRUST_AMT" />
+                                        </td>
+                                        <td class="view_title">價格類型</td>
+                                        <td class="view_content4">
+                                            <input type="text" class="k-textbox" ng-model="vm.customer.PRICE_ID" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="view_title">稅別</td>
+                                        <td class="view_content1">
+                                            <input type="text" class="k-textbox" ng-model="vm.customer.CUST_TAX" />
+                                        </td>
+                                        <td class="view_title">付款方式</td>
+                                        <td class="view_content4">
+                                            <select ng-model="vm.customer.NC_MARK" kendo-drop-down-list k-options="select.NC_MARK"></select>
+                                        </td>
+                                    </tr>
+                                </table>
                             </form>
-                        </div><!-- /.box-body -->
-            </div><!-- /.box -->
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+
         </div>
 
     </div>
-
-</div>
 
 </section><!-- /.content -->
 <!--<script>

@@ -1,4 +1,4 @@
-﻿app.factory('NewsFactory', ['$http', 'UrlHelper', function ($http, UrlHelper) {
+﻿app.factory('NewsFactory', ['$http', 'UrlHelper', '$datetime', function ($http, UrlHelper, $datetime) {
     
     return{
         // checklist, select選項
@@ -36,6 +36,16 @@
         remove: function (ppId) {
             var url = UrlHelper.prepareUrl('api/News/' + ppId);
             return $http.delete(url);
+        },
+
+        transformData: function (objs) {
+
+            angular.forEach(objs, function (item) {
+                item.StartTime = $datetime.formatDate( new Date(item.StartTime), "/" );
+                item.EndTime = $datetime.formatDate( new Date(item.EndTime), "/");
+            });
+
+            return objs;
         }
     };
 

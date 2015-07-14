@@ -1,12 +1,12 @@
 ﻿<!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        行程計劃
+        行程管理
         <small></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> icdtview </a></li>
-        <li class="active">行程計劃</li>
+        <li><a ui-sref="m.Home.index"><i class="fa fa-dashboard"></i> 首頁 </a></li>
+        <li class="active">行程規劃/行程管理</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -19,29 +19,66 @@
                     <h3 class="box-title"></h3>
                 </div>--><!-- /.box-header -->
                 <div class="box-body">
+
+                    <!--<div class="row">
+                        <div class="col-md-12 column">
+                            <form role="form" class="form-horizontal" name="signup_form" novalidate>
+                                <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+                                    <tr>
+                                        <td class="view_title" style="width: 50px;">
+                                            起始時間
+                                           
+                                        </td>
+                                        <td class="view_content2">
+                                            <input kendo-date-picker k-ng-model="vm.START" k-format="'yyyy/MM/dd'" class="k-datepicker-calendar" onkeydown="return false;" ng-change="vm.compareStartEnd()" />
+                                            <div class="error"
+                                                 ng-show="signup_form.isStartBigggerThanEndError">
+                                                <small class="error"
+                                                       ng-show="true">
+                                                    結束時間需大於起始時間
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="view_title" style="width: 50px;">
+                                            結束時間
+                                        </td>
+                                        <td class="view_content2">
+                                            <input kendo-date-picker k-ng-model="vm.END" k-format="'yyyy/MM/dd'" class="k-datepicker-calendar" onkeydown="return false;" ng-change="vm.compareStartEnd()" />
+                                        </td>
+                                        <td class="view_content2">
+                                            <input type="text" class="form-control" ng-model="vm.customer" placeholder="客戶名稱" />
+                                        </td>
+                                        <td class="view_content2">
+                                            <button type="button" class="btn btn-success block_inline btn-flat" ng-click="vm.fetchData()">查詢</button>
+                                        </td>
+
+                                     </tr>
+                                    
+                                </table>
+                            </form>
+
+                        </div>
+                    </div>-->
                     <div class="row" style="width:100%;text-align:right">
                         <div class="form-group block_inline">
-                            <!--<label for="起始時間">起始時間</label><br />-->
-                            <!--<input type="date" class="form-control" ng-model="vm.start" ng-init="vm.start = newDate()"/>-->
-                            <input type="date" class="k-datepicker-calendar" id="Start_Date" ng-model="record.ReceiveStartTime" ng-init="record.ReceiveStartTime = addDate(-2)" />
-                            <!--<input type="date" class="form-control" ng-model="record.ReceiveStartTime" ng-init="record.ReceiveStartTime = addDate(-2)" />-->
+                            <label for="起始時間">起始時間</label><br />
+                            <input kendo-date-picker k-ng-model="vm.START" k-format="'yyyy/MM/dd'" class="k-datepicker-calendar"/>
                         </div>
                         <div class="form-group block_inline">
-                            <!--<label for="終止時間">終止時間</label><br />-->
-                            <!--<input type="date" class="form-control" ng-model="vm.end" ng-init="vm.end = addDate(2)" />-->
-                            <!--<input type="date" class="form-control" ng-model="record.ReceiveEndTime" ng-init="record.ReceiveEndTime = newDate()" />-->
-                            <input type="date" class="k-datepicker-calendar" id="End_Date" ng-model="record.ReceiveEndTime" ng-init="record.ReceiveEndTime = newDate()" />
+                            <label for="終止時間">終止時間</label><br />
+                            <input kendo-date-picker k-ng-model="vm.END" k-format="'yyyy/MM/dd'" class="k-datepicker-calendar"/>
                         </div>
                         <div class="form-group block_inline" style="width:100px">
-                            <!--<label for="客戶名稱">客戶名稱</label><br />-->
-                            <input type="text" class="form-control" ng-model="vm.customer" placeholder="客戶名稱"/>
+                            <input type="text" class="form-control" ng-model="vm.customer.CUST_NAME" placeholder="客戶名稱"/>
                         </div>
                         <div class="form-group block_inline">
                             <label for="btn"></label><br />
-                            <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">查詢</button>
+                            <button type="button" class="btn btn-success block_inline btn-flat" ng-click="vm.fetchData()">查詢</button>
                         </div>
                     </div>
-                    <div class="row">
+                    
+                
+                <div class="row">
                         <div class="col-md-12 column">
                             <div ui-grid="gridOptions" ui-grid-selection class="uiGrid" ui-grid-auto-resize ui-grid-click style="height: 400px;"></div>
                         </div>

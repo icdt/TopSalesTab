@@ -26,6 +26,7 @@ angular.module('app', []).controller('ListUsersCtrl', [
     // 取得data填充ui grid
     UsersFactory.getAll().success(function (data) {
         $scope.gridOptions.data = data;
+       
     }).error(function (err) {
         console.log(err);
     });
@@ -34,7 +35,7 @@ angular.module('app', []).controller('ListUsersCtrl', [
     $scope.gridOptions = {};
     $scope.gridOptions = { enableRowSelection: true, enableRowHeaderSelection: true };
     $scope.gridOptions.columnDefs = [
-       { name: 'Edit', displayName: '修改', cellTemplate: '<button type="button" class="btn btn-small bg-purple btn-flat" ng-click="grid.appScope.goToUpdateForm(row.entity)" helf= >編輯</button> ', width: 100, pinnedLeft: true },
+       { name: 'Edit', displayName: '修改', cellTemplate: '<div style="text-align:center; margin-top:1px;margin-bottom:1px"><button type="button" class="btn btn-small bg-purple btn-flat" ng-click="grid.appScope.goToUpdateForm(row.entity)" helf= >編輯</button></div> ', width: 100, pinnedLeft: true },
        //{ name: 'Delete', displayName: '刪除', cellTemplate: '<button type="button" class="btn btn-small btn-danger btn-flat" ng-click="grid.appScope.gotToDeleteForm(row.entity)" helf= >刪除</button> ', width: 100, pinnedLeft: true },
        { name: 'UserName', displayName: '使用者名稱', width: 150 },
        { name: 'Email', displayName: '信箱', width: 120 }

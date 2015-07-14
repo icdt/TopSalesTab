@@ -1,0 +1,116 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        <button type="submit" class="btn btn-default btn-flat" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>回列表</button>
+        &nbsp;
+        產品查詢
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 產品與庫存管理 </a></li>
+        <li class="active">大類型 > 子分類 > 產品查詢</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Your Page Content Here -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-success">
+                <!--<div class="box-header">
+                    <h3 class="box-title"></h3>
+                </div>-->
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12 column">
+                            <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered" ng-repeat="item in vm.products">
+                                <tr>
+                                    <td rowspan="3" class="view_img">
+                                        <div class="product_img" style="background-image: url({{item.PHOTO}})"></div>
+                                    </td>
+                                    <td class="view_title">產品代號</td>
+                                    <td class="view_content1">{{item.PROD_ID}}</td>
+                                    <td class="view_title">訂價</td>
+                                    <td class="view_content2">{{item.SALE_PRICE}}</td>
+                                    <td colspan="2" class="view_content3"><button class="btn btn-block btn-primary" ng-click="goToDetail(item.PROD_ID)">展示</button></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2" class="view_title">
+                                        產品名稱
+                                    </td>
+                                    <td rowspan="2">{{item.PROD_NAME}}</td>
+                                    <td class="view_title">既有庫存量</td>
+                                    <td class="view_content2">{{item.DLAST_QTYI}}</td>
+                                    <td class="view_title">數量</td>
+                                    <td class="view_count"><input type="text" class="k-textbox" onkeyup="return ValidateNumber($(this),value)" placeholder="購買數量" ng-model="item.ORD_QTYI"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="view_title">單位</td>
+                                    <td class="view_content2">{{item.OUNIT_ID}}</td>
+                                    <td colspan="2" class="view_content3"><button class="btn btn-block btn-success" ng-click="vm.addToCart(item)">加入清單</button></td>
+                                </tr>
+                            </table>
+
+                            <!--<table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+                                <tr>
+                                    <td rowspan="3" class="view_img">
+                                        <div class="product_img" style="background-image: url(appImg/4bf9870ddaaaa.jpg)"></div>
+                                    </td>
+                                    <td class="view_title">品名</td>
+                                    <td class="view_content1">統一泡麵</td>
+                                    <td class="view_title">訂價</td>
+                                    <td class="view_content2">50</td>
+                                    <td colspan="2" class="view_content3"><button class="btn btn-block btn-primary" ng-click="goToDetail()">展示</button></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2" class="view_title">
+                                        規格簡述
+                                    </td>
+                                    <td rowspan="2"></td>
+                                    <td class="view_title">既有庫存量</td>
+                                    <td class="view_content2">10</td>
+                                    <td class="view_title">數量</td>
+                                    <td class="view_count">20</td>
+                                </tr>
+                                <tr>
+                                    <td class="view_title">單位</td>
+                                    <td class="view_content2">BW</td>
+                                    <td colspan="2" class="view_content3"><button class="btn btn-block btn-success">加入清單</button></td>
+                                </tr>
+                            </table>-->
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+
+        </div>
+    </div>
+
+</section><!-- /.content -->
+<script type="text/ng-template" id="selectCustomer.html">
+    <h4>請選擇客戶</h4>
+    <form role="form" class="form-horizontal" name="signup_form" novalidate>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered customer">
+            <tr>
+                <td class="view_title" style="width: 50px;">客戶名稱</td>
+                <td class="view_content3">
+                    <autocomplete name="CUST_NAME" class="k-textbox" ng-model="vm.autocompleteSelect" attr-placeholder="例: 優典行" click-activation="true" data="autocomplete.allCustomersName" on-type="autocomplete.searchCustomer" on-select="autocomplete.assignCustomer" required style="width: 80%"></autocomplete>
+                    <img ng-show="autocomplete.isSearchCustomer" src="/aApp/backend/appImg/loading_redball.gif" width="20" height="20" />
+                    <br />
+                    <div class="error"
+                         ng-show="signup_form.CUST_NAME.$invalid && signup_form.submitted">
+                        <small class="error"
+                               ng-show="signup_form.CUST_NAME.$error.required">
+                            客戶名稱為必填欄位!!
+                        </small>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div style="width: 50%; margin: 10px auto;">
+            <button class="btn btn-primary" ng-click="vm.addToCustomerToCart()">確定</button>
+        </div>
+    </form>
+</script>
+

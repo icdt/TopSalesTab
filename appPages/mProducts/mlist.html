@@ -3,17 +3,16 @@
     <h1>
         <button type="submit" class="btn btn-default btn-flat" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>回列表</button>
         &nbsp;
-        <a href="#"><i class="fa fa-dashboard"></i> 產品型錄 </a>
-        \ 大類型 \ 子分類 \ 產品管理
+        產品管理
         <small></small>
     </h1>
-    <!--<ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> icdtview </a></li>
-        <li class="active">列表</li>
-    </ol>-->
-    <div class="edit_btn">
-            <button type="submit" class="btn btn-success btn-flat block_inline">匯入</button>
-    </div>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 產品與庫存管理 </a></li>
+        <li class="active">大類型 > 子分類 > 產品管理</li>
+    </ol>
+    <!--<div class="edit_btn">
+        <button type="submit" class="btn btn-success btn-flat block_inline" ng-click="goToCreateForm()">新增產品</button>
+    </div>-->
 </section>
 <!-- Main content -->
 <section class="content">
@@ -27,44 +26,52 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-12 column">
-                            <div class="manage_title">
-                                總數量：<span class="badge bg-light-blue">55 筆</span>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                總價：<span class="badge bg-green">10000 元</span>
-                            </div>                      
+                        <div class="row" style="width:100%;text-align:right">
+                            <div class="col-md-12">
+                                <div class="form-group block_inline">
+                                    <label for="btn"></label><br />
+                                    <button type="submit" class="btn btn-success btn-flat block_inline" ng-click="goToCreateForm()">新增產品</button>
+                                </div>
+                                <!--<div class="manage_title">
+                                    總數量：<span class="badge bg-light-blue">{{vm.quantity}} 筆</span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    總價：<span class="badge bg-green">{{vm.totalPrice}} 元</span>
+                                </div>-->
+
+                            </div>
                         </div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-12 column">
-                            <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+                            <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered" ng-repeat="item in vm.products">
                                 <tr>
-                                    <td rowspan="3" class="view_img">
-                                        <div class="product_img" style="background-image: url(appImg/20150401092514_47176.jpg)"></div>
+                                    <td rowspan="4" class="view_img">
+                                        <div class="product_img" style="background-image: url({{item.PHOTO}})"></div>
                                     </td>
                                     <td class="view_title">品名</td>
-                                    <td class="view_content1">統一布丁</td>
-                                    <td class="view_title">訂價</td>
-                                    <td class="view_content2">1000</td>
-                                    <td rowspan="3" class="view_edit">
-                                        <button class="btn btn-block btn-primary" ng-click="goToUpdateForm()">編輯</button>
+                                    <td class="view_content1">{{item.PROD_ID}}</td>
+                                    <td class="view_title">訂價(大)</td>
+                                    <td class="view_content2">{{item.SALE_PRICE}}</td>
+                                    <td rowspan="4" class="view_edit">
+                                        <button class="btn btn-block btn-primary" ng-click="goToUpdateForm(item.PROD_ID)">編輯</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td rowspan="2" class="view_title">
-                                        規格簡述
-                                    </td>
-                                    <td rowspan="2">1111111</td>
+                                    <td class="view_title">產品名稱</td>
+                                    <td class="view_content1">{{item.PROD_NAME}}</td>
                                     <td class="view_title">既有庫存量</td>
-                                    <td class="view_content2">20</td>
+                                    <td class="view_content2">{{item.DLAST_QTYI}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="view_title">計量單位</td>
-                                    <td class="view_content2">CS</td>
+                                    <td class="view_title">計量單位(大)</td>
+                                    <td class="view_content1">{{item.OUNIT_ID}}</td>
+                                    <td class="view_title">計量單位(小)</td>
+                                    <td class="view_content2">{{item.BASE_IDname}}</td>
                                 </tr>
                             </table>
 
-                            <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+                            <!--<table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
                                 <tr>
                                     <td rowspan="3" class="view_img">
                                         <div class="product_img" style="background-image: url(appImg/4bf9870ddaaaa.jpg)"></div>
@@ -89,7 +96,7 @@
                                     <td class="view_title">計量單位</td>
                                     <td class="view_content2">BW</td>
                                 </tr>
-                            </table>
+                            </table>-->
                         </div>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->

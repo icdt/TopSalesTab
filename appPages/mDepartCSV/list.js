@@ -6,27 +6,31 @@ angular.module('app', []).controller('ListDepartCSVCtrl', ['$scope', '$state', '
 
     // 動作
     $scope.vm.uploadDepartCSV = function () {
-        debugger;
-        var file = $scope.myFile;
-        debugger;
-        console.log('file is ' + JSON.stringify(file));
-        var uploadUrl = "../../mvc/DepartCSV";
-        fileUpload.uploadFileToUrl(file, uploadUrl).success(function (data) {
-            location.reload();
-        }).error(function () {
-            alert('上傳錯誤');
-        });
+        if (confirm("上傳檔案視網路速度需一至數分鐘")) {
+            $("#loading").fadeIn("fast");
+            var file = $scope.myFile;
+            console.log('file is ' + JSON.stringify(file));
+            var uploadUrl = "../../mvc/DepartCSV";
+            fileUpload.uploadFileToUrl(file, uploadUrl).success(function (data) {
+                $scope.vm.fetchTableData();
+                $("#loading").fadeOut("fast");
+            }).error(function () {
+                alert('上傳錯誤');
+            });
+        } else {
+            return;
+        }
+       
     };
 
-
-    // 取得data填充ui grid
-    DepartCSVFactory.getAll().success(function (data) {
-        debugger;
-
-        $scope.gridOptions.data = data;
-    }).error(function (err) {
-        console.log(err);
-    });
+    $scope.vm.fetchTableData = function () {
+        // 取得data填充ui grid
+        DepartCSVFactory.getAll().success(function (data) {
+            $scope.gridOptions.data = data;
+        }).error(function (err) {
+            console.log(err);
+        });
+    };
 
     // 使用者介面基本設定
     $scope.gridOptions = {};
@@ -34,9 +38,13 @@ angular.module('app', []).controller('ListDepartCSVCtrl', ['$scope', '$state', '
     $scope.gridOptions.columnDefs = [
        //{ name: 'Edit', cellTemplate: '<button type="button" class="btn btn-small bg-purple btn-flat" ng-click="grid.appScope.goToUpdateForm(row.entity)" helf= >編輯</button> ', width: 100, pinnedLeft: true },
        //{ name: 'Delete', cellTemplate: '<button type="button" class="btn btn-small btn-danger btn-flat" ng-click="grid.appScope.gotToDeleteForm(row.entity)" helf= >刪除</button> ', width: 100, pinnedLeft: true },
-       { name: 'Code', displayName: '部門代號', width: 100 },
-       { name: 'Name', displayName: '部門名稱', width: 100 },
-       { name: 'NewColumn1', displayName: '新欄位', width: 100 }
+       { name: 'FDEPT_ID', displayName: '部門代號', width: 100 },
+       { name: 'FDEPT_NAME', displayName: '部門名稱', width: 100 },
     ];
+    $scope.vm.fetchTableData();
+
+
+
+
 
 }]);

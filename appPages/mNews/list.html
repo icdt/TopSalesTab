@@ -5,8 +5,8 @@
         <small></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> icdtview </a></li>
-        <li class="active">最新消息</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> 最新消息 </a></li>
+        <li class="active">列表</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -19,22 +19,22 @@
                     <h3 class="box-title"></h3>
                 </div>--><!-- /.box-header -->
                 <div class="box-body">
-                    <div class="row" style="width:100%;text-align:right">
-                        <div class="col-md-12">
-                            <div class="form-group block_inline">
-                                <label for="btn"></label><br />
-                                <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">新增</button>
+                    <div class="row">
+                        <div class="col-md-2 column">
+                            <div class="form-group block_inline" style="width:100px">
+                                <label for="" style="visibility: hidden">--</label><br />
+                                <button type="submit" class="btn btn-success btn-flat" ng-click="vm.goToCreateForm()"><span class="glyphicon glyphicon-plus"></span>新增資料</button>
                             </div>
-                            <!--<div class="form-group block_inline">
-                                <label for="btn"></label><br />
-                                <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">編輯</button>
+                        </div>
+                        <div class="col-md-10 column">
+                            <!--<div class="form-group block_inline" style="width:100px">
+                                <label for="客戶名稱">客戶名稱</label><br />
+                                <input type="text" class="form-control" ng-model="vm.customer" />
+                            </div>
+                            <div class="form-group block_inline">
+                                <label for="btn" style="visibility: hidden">--</label><br />
+                                <button type="button" class="btn btn-success block_inline btn-flat" ng-click="searchOrder(record)">查詢</button>
                             </div>-->
-                        
-                            <div class="form-group block_inline">
-                                <label for="btn"></label><br />
-                                <button type="button" class="btn btn-danger btn-flat block_inline" ng-click="searchOrder(record)">刪除</button>
-                            </div>
-
                         </div>
                     </div>
                     <div class="row">

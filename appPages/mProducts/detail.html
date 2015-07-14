@@ -3,20 +3,18 @@
     <h1>
         <button type="submit" class="btn btn-default btn-flat" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>回列表</button>
         &nbsp;
-        <a href="#"><i class="fa fa-dashboard"></i> 查詢結果 </a>
-        \ 明細
+        產品明細
         <small></small>
     </h1>
-    <!--<ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> icdtview </a></li>
-        <li class="active">列表</li>
-    </ol>-->
-    <div class="edit_btn">
-        <span class="edit_count">
-            數量：<span class="badge bg-light-blue">100 </span>
-        </span>&nbsp;&nbsp;
-            <button type="submit" class="btn btn-success btn-flat block_inline" ng-click="vm.addlist()">加入清單</button>
-    </div>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 查詢結果 </a></li>
+        <li class="active">產品明細</li>
+    </ol>
+    <!--<div class="edit_btn">
+        <span class="edit_count">數量：</span><input type="text" class="k-textbox" onkeyup="return ValidateNumber($(this),value)" placeholder="購買數量" />
+        &nbsp;&nbsp;
+        <button type="submit" class="btn btn-success btn-flat block_inline" ng-click="vm.addlist()">加入清單</button>
+    </div>-->
 
 </section>
 <!-- Main content -->
@@ -30,34 +28,53 @@
                 </div>-->
                 <!-- /.box-header -->
                 <div class="box-body">
+                    <div class="row" style="display: none;">
+                        <div class="row" style="width:100%;text-align:right">
+                            <div class="col-md-12">
+                                <div class="form-group block_inline">
+                                    <label for="btn">數量：</label>
+                                    <input type="text" class="k-textbox search" onkeyup="return ValidateNumber($(this),value)" placeholder="購買數量" ng-model="vm.theProduct.ORD_QTYI" />
+                                </div>
+                                <div class="form-group block_inline">
+                                    <label for="btn"></label><br />
+                                    <button type="submit" class="btn btn-success btn-flat block_inline" ng-click="vm.addToCart(vm.theProduct)">加入清單</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
                     <div class="row">
                         <div class="col-md-12 column">
                             <form role="form" class="form-horizontal">
                                 <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
                                     <tr>
                                         <td rowspan="3" class="view_img">
-                                            <div class="product_edit_img" style="background-image: url(appImg/20150401092514_47176.jpg)"></div>
+                                            <div class="product_edit_img" style="background-image: url({{vm.theProduct.PHOTO}})"></div>
                                         </td>
-                                        <td class="view_title">品名</td>
-                                        <td class="view_content1">統一布丁</td>
-                                        <td class="view_title">訂價</td>
-                                        <td class="view_content2">1000</td>
+                                        <td class="view_title">產品代號</td>
+                                        <td class="view_content1">{{vm.theProduct.PROD_ID}}</td>
+                                        <td class="view_title">訂價(大)</td>
+                                        <td class="view_content2">{{vm.theProduct.SALE_PRICE}}</td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="2" class="view_title">
-                                            規格簡述
+                                        <td class="view_title">
+                                            產品名稱
                                         </td>
-                                        <td rowspan="2">1111111</td>
+                                        <td class="view_content1">{{vm.theProduct.PROD_NAME}}</td>
                                         <td class="view_title">既有庫存量</td>
-                                        <td class="view_content2">20</td>
+                                        <td class="view_content2">{{vm.theProduct.DLAST_QTYI}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="view_title">單位</td>
-                                        <td class="view_content2">CS</td>
+                                        <td class="view_title">計量單位(大)</td>
+                                        <td class="view_content1">{{vm.theProduct.OUNIT_ID}}</td>
+                                        <td class="view_title">計量單位(小)</td>
+                                        <td class="view_content2">{{vm.theProduct.BASE_IDname}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" class="view_detail">
-                                            11111
+                                            <div ng-bind-html="trustAsHtml(vm.theProduct.INTRO)"></div>
                                         </td>
                                     </tr>
                                 </table>
@@ -71,7 +88,14 @@
         </div>
     </div>
 
+    <script type="text/ng-template" id="selectCustomer.html">
+        <h4>請選擇客戶</h4>
+        <autocomplete name="CUST_NAME" class="k-textbox" ng-model="vm.eevent.CUST_NAME" attr-placeholder="客戶名稱" click-activation="true" data="vm.autocomplete.allCustomersName" on-type="vm.doSomething1" on-select="vm.doSomethingElse1" required></autocomplete>
+        <div style="width: 50%; margin: 10px auto;">
+            <button class="btn btn-primary" ng-click="vm.addToCustomerToCart(vm.addProduct)">確定</button>
+        </div>
 
+    </script>
 
 </section><!-- /.content -->
 <!--<script>
