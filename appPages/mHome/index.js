@@ -6,7 +6,7 @@ angular.module('app', []).controller('ListindexCtrl', [
         // 宣告vm
         $scope.vm = {};
 
-        動作
+        //動作
         //產品與庫存管理
         $scope.vm.goToProducts = function () {
             $state.go("m.Products.category", {type: 1});
