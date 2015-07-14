@@ -8,7 +8,7 @@ angular.module('app', []).controller('ListindexCtrl', [
 
         動作
         //產品與庫存管理
-        $scope.goToProducts = function (obj) {
+        $scope.goToProducts = function () {
             $state.go("m.Products.category");
         };
         //顧客關係
