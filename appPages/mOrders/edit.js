@@ -181,7 +181,7 @@ angular.module('app', []).controller('EditOrdersCtrl', [
             };
 
             $cordovaCamera.getPicture(options).then(function(imageURI) {
-              $scope.vm.order.RECEIPT_BASE64 = imageURI;
+              $scope.vm.order.RECEIPT_PHOTO = imageURI;
             }, function(err) {
               // error
             });
