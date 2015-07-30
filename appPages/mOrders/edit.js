@@ -12,6 +12,12 @@ angular.module('app', []).controller('EditOrdersCtrl', [
         // 宣告變數, function, object
         $scope.vm.order = $global.selectedOrder;
 
+        if ($scope.vm.order.RECEIPT_PHOTO != null) {
+            var url = UrlHelper.prepareUrl($scope.vm.order.RECEIPT_PHOTO);
+            $scope.vm.order.RECEIPT_PHOTO = url;
+        };
+        
+
         SalemstFactory.getByEMPID($scope.vm.order.SALE_ID).success(function (data) {
             $scope.vm.order.SALE_NAME = data.EMP_NAME;
         }).error(function (err) {
@@ -77,7 +83,7 @@ angular.module('app', []).controller('EditOrdersCtrl', [
             //上傳圖片
             var file = $scope.vm.order.RECEIPT_FILE;
             if (file != null) {
-                var uploadUrl = UrlHelper.prepareUrl('/api/files?owner=orders&folder=' + $scope.vm.order.VOU_SALE);
+                var uploadUrl = UrlHelper.prepareUrl('api/files?owner=orders&folder=' + $scope.vm.order.VOU_SALE);
                 fileUpload.uploadFileToUrl(file, uploadUrl).success(function (data) {
 
                     // api傳回圖片路徑
@@ -147,7 +153,8 @@ angular.module('app', []).controller('EditOrdersCtrl', [
             var reader = new FileReader();
             reader.onload = function (evt) {
                 $scope.$apply(function ($scope) {
-                    $scope.vm.order.RECEIPT_BASE64 = evt.target.result;
+                    // $scope.vm.order.RECEIPT_BASE64 = evt.target.result;
+                    $scope.vm.order.RECEIPT_PHOTO = evt.target.result;
                     //callbackobj.imageFix64 = evt.target.result.substr(evt.target.result.indexOf(',') + 1);
                 });
             };
