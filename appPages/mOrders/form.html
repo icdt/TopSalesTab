@@ -59,7 +59,7 @@
                                     <tr>
                                         <td class="view_title">簽收照片&nbsp;<i class="fa fa-camera"></i></td>
                                         <td class="view_content1" colspan="3">
-                                            <img src="{{vm.order.RECEIPT_BASE64}}"  alt="" width="50" height="50" >
+                                            <img src="{{vm.order.RECEIPT_BASE64}}"  alt="" width="auto" height="120" >
                                             <button class="btn btn-primary zoom_in" ng-click="vm.takePhoto()"><i class="glyphicon glyphicon-zoom-in"></i> 照相</button>
                                             <button class="btn btn-primary zoom_in" ng-click="clickToOpen()"><i class="glyphicon glyphicon-zoom-in"></i> 檢視圖片</button>
                                         </td>
@@ -83,7 +83,7 @@
                             <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered" ng-repeat="item in vm.order.Details">
                                 <tr>
                                     <td rowspan="4" class="view_img">
-                                        <div class="product_img" style="background-image: url({{item.PHOTO}}); width: auto; height: 100px;"></div>
+                                        <div class="product_img" style="background-image: url({{item.PHOTO}});"></div>
                                     </td>
                                     <td class="view_title">商品代號</td>
                                     <td class="view_content1">{{item.PROD_ID}}</td>
