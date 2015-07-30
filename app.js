@@ -86,7 +86,7 @@ function ($stateProvider, $urlRouterProvider, $httpProvider, ngToastProvider) {
                 //$rootScope.wrapperClass = 'login-box';
             }]
         }
-    });
+    })
     // .state('register', {
     //     url: '/register',
     //     templateUrl: 'appPages/aRegister/index.html',
@@ -98,17 +98,17 @@ function ($stateProvider, $urlRouterProvider, $httpProvider, ngToastProvider) {
     //         }]
     //     }
     // })
-    // .state('changePassword', {
-    //     url: '/changePassword',
-    //     templateUrl: 'appPages/aUserChangePassword/index.html',
-    //     controller: 'UserChangePasswordCtrl',
-    //     resolve: {
-    //         bodyClass: ['$rootScope', function ($rootScope) {
-    //             $rootScope.bodyClass = 'login-page';
-    //             //$rootScope.wrapperClass = 'login-box';
-    //         }]
-    //     }
-    // });
+    .state('changePassword', {
+        url: '/changePassword',
+        templateUrl: 'appPages/aUserChangePassword/index.html',
+        controller: 'UserChangePasswordCtrl',
+        resolve: {
+            bodyClass: ['$rootScope', function ($rootScope) {
+                $rootScope.bodyClass = 'login-page';
+                //$rootScope.wrapperClass = 'login-box';
+            }]
+        }
+    });
 
     ngToastProvider.configure({
         animation: 'slide', // or 'fade'
