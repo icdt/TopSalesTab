@@ -41,6 +41,7 @@ angular.module('app', []).controller('EditOrdersCtrl', [
                 item.BASE_IDname = item.productDetail.BASE_IDname;
                 item.PHOTO = item.productDetail.PHOTO;
                 item.DLAST_QTYI = item.productDetail.DLAST_QTYI;
+                item.PHOTO = UrlHelper.prepareUrl(item.PHOTO);
             });
             $("#loading").fadeOut("fast");
         });

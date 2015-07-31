@@ -107,6 +107,14 @@
             var url = UrlHelper.prepareUrl('api/files?owner=' + owner + '&folder=' + folder);
             return $http.post(url, ppObj);
 
+        },
+        transformData: function(products){
+
+            angular.forEach(products, function(item){
+                item.PHOTO = UrlHelper.prepareUrl(item.PHOTO);
+            });
+
+            return products;
         }
     };
 

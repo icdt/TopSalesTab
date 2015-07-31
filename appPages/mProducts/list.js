@@ -99,7 +99,7 @@ angular.module('app', []).controller('ListProductsCtrl', [
         };
 
         ProductsFactory.getProductsByCate($stateParams.cate).success(function (data) {
-            $scope.vm.products = data;
+            $scope.vm.products = ProductsFactory.transformData(data);
             $("#loading").fadeOut("fast");
 
         }).error(function (err) {
