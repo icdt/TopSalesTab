@@ -81,38 +81,41 @@ angular.module('app', []).controller('EditOrdersCtrl', [
         // 動作
         // 儲存
         $scope.vm.save = function () {
+
+            $scope.vm.uploadPhoto();
+
             //上傳圖片
-            var file = $scope.vm.order.RECEIPT_FILE;
-            if (file != null) {
-                var uploadUrl = UrlHelper.prepareUrl('api/files?owner=orders&folder=' + $scope.vm.order.VOU_SALE);
-                fileUpload.uploadFileToUrl(file, uploadUrl).success(function (data) {
+            // var file = $scope.vm.order.RECEIPT_FILE;
+            // if (file != null) {
+            //     var uploadUrl = UrlHelper.prepareUrl('api/files?owner=orders&folder=' + $scope.vm.order.VOU_SALE);
+            //     fileUpload.uploadFileToUrl(file, uploadUrl).success(function (data) {
 
-                    // api傳回圖片路徑
-                    $scope.vm.order.RECEIPT_PHOTO = data;
+            //         // api傳回圖片路徑
+            //         $scope.vm.order.RECEIPT_PHOTO = data;
 
-                    OrdersFactory.update($scope.vm.order).success(function (data) {
-                        alert("儲存成功!!");
-                        $state.go('m.Orders.list');
-                    }).error(function (err) {
-                        console.log(err);
-                    });
+            //         OrdersFactory.update($scope.vm.order).success(function (data) {
+            //             alert("儲存成功!!");
+            //             $state.go('m.Orders.list');
+            //         }).error(function (err) {
+            //             console.log(err);
+            //         });
 
-                }).error(function () {
-                    alert('儲存失敗');
-                });
-            }
-            else {
-                $scope.vm.order.RECEIPT_PHOTO = $scope.vm.order.RECEIPT_BASE64;
+            //     }).error(function () {
+            //         alert('儲存失敗');
+            //     });
+            // }
+            // else {
+            //     $scope.vm.order.RECEIPT_PHOTO = $scope.vm.order.RECEIPT_BASE64;
 
-                OrdersFactory.update($scope.vm.order).success(function (data) {
-                    alert("儲存成功!!");
-                    $state.go('m.Orders.list');
-                }).error(function (err) {
-                    console.log(err);
-                    alert('儲存失敗');
-                });
+            //     OrdersFactory.update($scope.vm.order).success(function (data) {
+            //         alert("儲存成功!!");
+            //         $state.go('m.Orders.list');
+            //     }).error(function (err) {
+            //         console.log(err);
+            //         alert('儲存失敗');
+            //     });
 
-            }
+            // }
         };
         // 刪除
         $scope.vm.remove = function () {
@@ -177,17 +180,42 @@ angular.module('app', []).controller('EditOrdersCtrl', [
         $scope.vm.takePhoto = function () {
 
             var options = {
-              destinationType: Camera.DestinationType.FILE_URI,
-              sourceType: Camera.PictureSourceType.CAMERA,
+                quality: 50,
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.CAMERA,
             };
 
             $cordovaCamera.getPicture(options).then(function(imageURI) {
               $scope.vm.order.RECEIPT_PHOTO = imageURI;
+              console.log($scope.vm.order.RECEIPT_PHOTO );
             }, function(err) {
               // error
             });
         }
+
+        $scope.vm.uploadPhoto = function(){
+
+            var uploadUrl = UrlHelper.prepareUrl('api/files?owner=orders&folder=' + $scope.vm.order.VOU_SALE);
+
+            var fileUrl = $scope.vm.order.RECEIPT_PHOTO;
+            var options = new FileUploadOptions();
+            options.fileKey = "file";
+            options.fileName = fileUrl.substr( fileUrl.lastIndexOf('/') + 1 );
+            options.mimeType = "image/jpeg";
+            options.chunkedMode = true;
+
+            var ft = new FileTransfer();
+            ft.upload(fileUrl, encodeURI(uploadUrl), uploadPhotoOK, uploadPhotoFail, options);
+
+        };
         
+        function uploadPhotoOK(r){
+            console.log("uploadPhotoOK: ", r);
+        }
+
+        function uploadPhotoFail(r){
+            console.log("uploadPhotoFail: ", r);
+        }
 
 
     }]);
