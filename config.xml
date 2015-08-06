@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="tw.com.icdt.topsales"
-        version="0.0.1"
-        xmlns="http://www.w3.org/ns/widgets"
-        xmlns:cdv="http://cordova.apache.org/ns/1.0"
-        xmlns:gap="http://phonegap.com/ns/1.0">
+<widget 
+  xmlns="http://www.w3.org/ns/widgets" 
+  xmlns:gap="http://phonegap.com/ns/1.0" 
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  id="me.app.id" 
+  version="1.0.0">
   <name>TopSales</name>
   <description>
         TopSales Project
@@ -25,4 +26,7 @@
   <gap:plugin name="org.apache.cordova.device" />
   <gap:plugin name="com.ionic.keyboard" version="1.0.3" />
   <gap:plugin name="org.apache.cordova.camera" version="0.3.2" />
+  <gap:config-file platform="android" parent="/manifest">
+     <application android:debuggable="true" />
+  </gap:config-file>
 </widget>
